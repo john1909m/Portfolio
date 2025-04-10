@@ -1,6 +1,41 @@
 .cover-container{
     width: 100%;
-    height: 40vh;
+    height: 50vh;
     overflow: hidden;
+    filter: blur(3px);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/src/assets/images/creative_workspace_laptop_design_vs_code.jpg");
+    background-size: cover;
+  background-position:center;
 
+
+}
+.cover-container img{
+    width: 100%;
+    transform: translateY(-15%);
+}
+.profile{
+    position: relative;
+    z-index: 11;
+    height: 90%;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    transform: translateY(-10%);
+
+}
+.profile-photo{
+    transform: translateY(-60%);
+}
+.profile-info{
+    transform: translateY(-40%);
+    align-items: center;
+}
+
+@media (max-width:639px) {
+    .profile{
+        width: 80%;
+    }
+    .cover-container{
+        height: 30vh;
+    }
 }
