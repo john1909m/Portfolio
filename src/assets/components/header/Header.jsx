@@ -31,7 +31,9 @@ const Header = () => {
                     <a href=""><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all rounded-full' src="/src/assets/images/linkedin-round-svgrepo-com.svg" alt="" /></a>
                     <a href=""><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all rounded-full' src="/src/assets/images/instagram-f-svgrepo-com.svg" alt="" /></a>
                 </div>
+                <div className='h-[3vh]'></div>
 
+                    <a href=""><button className='bg-orange-500 text-black p-5 rounded-xl font-bold text-[16px] hover:bg-transparent hover:border-[1px] hover:text-orange-500 hover:border-orange-500 transition-all'>Download CV</button></a>
 
                 </div>
 
