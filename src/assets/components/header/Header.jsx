@@ -8,7 +8,7 @@ const Header = () => {
         
         </div>
 
-        <div className="profile-container flex h-[90vh] w-full justify-center">
+        <div className="profile-container flex h-[95vh] w-full justify-center">
 
             <div className="profile rounded-lg shadow-black-800 bg-white shadow-2xl sm:w-[80%] md:w-[60%] lg:w-[40%] flex flex-col p-3">
 
@@ -26,14 +26,14 @@ const Header = () => {
                 <p className='text-lg'><strong>Giza</strong> - October</p>
                     <div className='h-[5vh]'></div>
                 <div className="profile-links flex justify-between w-[80%]">
-                    <a href=""><img className='w-12 bg-orange-500 p-2  hover:bg-transparent cursor-pointer transition-all rounded-full' src="/src/assets/images/github-142-svgrepo-com (1).svg" alt="" /></a>
-                    <a href=""><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all rounded-full' src="/src/assets/images/behance-round-svgrepo-com.svg" alt="" /></a>
-                    <a href=""><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all rounded-full' src="/src/assets/images/linkedin-round-svgrepo-com.svg" alt="" /></a>
-                    <a href=""><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all rounded-full' src="/src/assets/images/instagram-f-svgrepo-com.svg" alt="" /></a>
+                    <a href="https://github.com/john1909m" target='blank'><img className='w-12 bg-orange-500 p-2  hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/src/assets/images/github-142-svgrepo-com (1).svg" alt="" /></a>
+                    <a href="https://www.behance.net/JohnEmil21" target='blank'><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/src/assets/images/behance-round-svgrepo-com.svg" alt="" /></a>
+                    <a href="https://www.linkedin.com/in/john-emil-0134a3239/" target='blank'><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/src/assets/images/linkedin-round-svgrepo-com.svg" alt="" /></a>
+                    <a href="" target='blank'><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/src/assets/images/instagram-f-svgrepo-com.svg" alt="" /></a>
                 </div>
                 <div className='h-[3vh]'></div>
 
-                    <a href=""><button className='bg-orange-500 text-black p-5 rounded-xl font-bold text-[16px] hover:bg-transparent hover:border-[1px] hover:text-orange-500 hover:border-orange-500 transition-all'>Download CV</button></a>
+                    <a href="https://drive.google.com/file/d/1XBsGcMrIB9oeeDLS9wDxapu3gfR-oFhB/view" target='blank'><button className='bg-orange-500 text-black p-5 rounded-xl font-bold text-[16px] hover:bg-transparent hover:border-[1px] hover:text-orange-500 hover:border-orange-500 transition-all hover:translate-y-2 hover:scale-110'>Download CV</button></a>
 
                 </div>
 
