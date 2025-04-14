@@ -1,6 +1,6 @@
 .skill{
-    width: 150px;
-      height: 150px;
+    width: 200px;
+      height: 200px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -11,8 +11,8 @@
 .skill::before{
     content: '';
     // position: absolute;
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
     background: white;
     border-radius: 50%;
 }
