@@ -7,7 +7,7 @@ export const Skills = () => {
         <div className="skills-container flex md:flex-row sm:flex-col  md:justify-center bg-blue-950 md:py-8 sm:px-5 sm:py-8 text-white ">
         <div className="about-head md:w-[23%] sm:w-full ">
           <div className="about-fx w-14 bg-orange-500 h-[15px] mb-3 rounded-full "></div>
-          <h2 className='font-bold text-3xl'>Skills</h2>
+          <h2 className='font-bold text-3xl'>My Skills</h2>
           
         </div>
             <div className='h-[5vh]'></div>
