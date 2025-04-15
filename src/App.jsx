@@ -5,6 +5,7 @@ import './App.css'
 import About from './assets/components/About/About'
 import Header from './assets/components/header/header'
 import { Portfolio } from './assets/components/Potfolio/Portfolio'
+import { Education } from './assets/components/Education/Education'
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
       <Header></Header>
       <About></About>
       <Portfolio></Portfolio>
+      <Education></Education>
     </>
   )
 }

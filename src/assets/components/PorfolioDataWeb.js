@@ -46,14 +46,8 @@ export const Web=[
 ]
 
 export const Graphic=[
-    {
-        id:1,
-        image:"/src/assets/images/graphic images/adidas bannar mockup 2.webp"
-    },
-    {
-        id:2,
-        image:"/src/assets/images/graphic images/bag advertising.webp"
-    },
+
+
     {
         id:3,
         image:"/src/assets/images/graphic images/cat butterfly.webp"
@@ -82,14 +76,7 @@ export const Graphic=[
         id:9,
         image:"/src/assets/images/graphic images/max muscle.webp"
     },
-    {
-        id:10,
-        image:"/src/assets/images/graphic images/offer post.webp"
-    },
-    {
-        id:11,
-        image:"/src/assets/images/graphic images/omar el mohamedy.webp"
-    },
+
     {
         id:12,
         image:"/src/assets/images/graphic images/ramadan manipulation.webp"
