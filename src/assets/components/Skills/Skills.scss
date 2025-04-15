@@ -1,0 +1,164 @@
+.skills-box ul li:nth-child(1)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/html-5-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+.skills-box ul li:nth-child(2)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/css-3-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+.skills-box ul li:nth-child(3)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/javascript-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+.skills-box ul li:nth-child(4)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/react-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+
+.skills-box ul li:nth-child(5)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/vite-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+
+.skills-box ul li:nth-child(6)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/github-142-svgrepo-com\ \(1\).svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+
+
+.skills-box ul li:nth-child(7)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/photoshop-cc-logo-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+
+.skills-box ul li:nth-child(8)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/adobe-illustrator-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+
+.skills-box ul li:nth-child(9)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/adobe-premiere-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+
+
+.skills-box ul li:nth-child(10)::before{
+    content: "";
+  display: inline-block;
+  width: 50px; /* Set icon width */
+  height: 50px; /* Set icon height */
+  background-image: url('/src/assets/images/after-effects-cc-logo-svgrepo-com.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+.skills-box:hover.skills-box ul li::before{
+    
+        transform: rotateY(720deg) scale(1.1);
+    transition: all 1s ease-in-out;
+    
+}
+.skills-box:hover.skills-box ul li{
+    transform: scale(1.04);
+    transition: all 1s ease-in-out;
+}

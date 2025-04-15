@@ -5,14 +5,14 @@ export const Education = () => {
   return (
     <>
 
-      <div className="about-container text-white bg-blue-950 flex md:flex-row sm:flex-col flex-col justify-between p-10  ">
-        <div className="about-head w-full ">
+      <div className="about-container text-white bg-blue-950 flex md:flex-row sm:flex-col flex-col justify-around p-10  ">
+        <div className="about-head w-[30%] ">
           <div className="about-fx w-20 bg-orange-500 h-[15px] mb-3 rounded-full "></div>
           <h2 className='font-bold text-3xl'>Education</h2>
           
         </div>
         <div className='h-[5vh]'></div>
-        <div className="about-content w-full">
+        <div className="about-content md:w-[60%] sm:w-[90%] ">
           <div className="Education-text">
             <ul className='education-points'>
                 <li>
