@@ -2,12 +2,12 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import About from './assets/components/About/About'
-import Header from './assets/components/header/header'
-import { Portfolio } from './assets/components/Potfolio/Portfolio'
-import { Education } from './assets/components/Education/Education'
-import { Skills } from './assets/components/Skills/Skills'
-import Footer from './assets/components/Footer/Footer'
+import About from './assets/components/About'
+import Header from './assets/components/header'
+import { Portfolio } from './assets/components/Potfolio'
+import { Education } from './assets/components/Education'
+import { Skills } from './assets/components/Skills'
+import Footer from './assets/components/Footer'
 
 function App() {
   

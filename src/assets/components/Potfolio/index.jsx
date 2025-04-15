@@ -2,8 +2,8 @@ import React from 'react'
 import "./Portfolio.scss"
 import { useState } from 'react'
 import {Graphic , Web} from "../PorfolioDataWeb"
-import { PortfolioCardWeb } from '../PortfolioCardWeb/PortfolioCardWeb'
-import PortfolioCardGraphic from '../PorfolioCardGraphic/PortfolioCardGraphic'
+import { PortfolioCardWeb } from '../PortfolioCardWeb'
+import PortfolioCardGraphic from '../PorfolioCardGraphic'
 export const Portfolio = () => {
 
     const [selectedCategory, setSelectedCategory] = useState('web');
