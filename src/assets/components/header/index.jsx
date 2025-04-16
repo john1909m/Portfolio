@@ -29,7 +29,7 @@ const Header = () => {
                     <a href="https://github.com/john1909m" target='blank'><img className='w-12 bg-orange-500 p-2  hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/images/github-142-svgrepo-com (1).svg" alt="" /></a>
                     <a href="https://www.behance.net/JohnEmil21" target='blank'><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/images/behance-round-svgrepo-com.svg" alt="" /></a>
                     <a href="https://www.linkedin.com/in/john-emil-0134a3239/" target='blank'><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/images/linkedin-round-svgrepo-com.svg" alt="" /></a>
-                    <a href="" target='blank'><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/images/instagram-f-svgrepo-com.svg" alt="" /></a>
+                    <a href="https://www.instagram.com/_john_emil_?igsh=MXU3MzZvMmd1ZzNtYg%3D%3D&utm_source=qr" target='blank'><img className='w-12 bg-orange-500 p-2 hover:bg-transparent cursor-pointer transition-all hover:scale-125 rounded-full' src="/images/instagram-f-svgrepo-com.svg" alt="" /></a>
                 </div>
                 <div className='h-[3vh]'></div>
 

@@ -76,12 +76,12 @@ export const Contact = () => {
                     <div className="linkedin flex flex-col justify-around place-items-center h-[20vh] hover:bg-orange-500 hover:text-white transition-all border-2 rounded-lg border-orange-500">
                       <img className='w-[30px] h-[30px]' src="/images/linkedin-round-svgrepo-com.svg" alt="" />
                       <p>John Emil</p>
-                      <a href=""  className='text-blue-700'>send a messege</a>
+                      <a href="https://www.linkedin.com/in/john-emil-0134a3239/" target='blank'  className='text-blue-700'>send a messege</a>
                     </div>
                     <div className="whatsapp flex flex-col justify-around place-items-center h-[20vh] hover:bg-orange-500 hover:text-white transition-all border-2 rounded-lg border-orange-500">
                       <img className='w-[30px] h-[30px]' src="/images/whatsapp-svgrepo-com.svg" alt="" />
                       <p>+201200158852</p>
-                      <a href="" className='text-blue-700'>send a messege</a>
+                      <a href="wa.me/201200158852" target='_blank' className='text-blue-700'>send a messege</a>
                     </div>
                 </div>
                 <form onSubmit={handleSubmit} className='flex flex-col h-[60vh] md:w-[50%] sm:w-[100%] justify-between'>
