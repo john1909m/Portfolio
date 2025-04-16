@@ -18,8 +18,7 @@ const [activeTab, setActiveTab] = useState('home');
     { id: 'about', icon: <FaUser size="20" />, label: 'About',link:'#about' },
     { id: 'portfolio', icon: <FaBriefcase size="20" />, label: 'Portfolio',link:'#portfolio' },
     { id: 'education', icon: <FaGraduationCap size="20" />, label: 'Education',link:'#education' },
-    { id: 'experience', icon: <FaBrain size="20" />, label: 'Experience',link:'#home' },
-    { id: 'contact', icon: <FaEnvelope size="20" />, label: 'Contact' ,link:'#home'}
+    
   ];
 
 
