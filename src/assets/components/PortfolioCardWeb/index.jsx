@@ -3,7 +3,7 @@ import React from 'react'
 export const PortfolioCardWeb = ({image,Name,gitHub,liveDemo}) => {
   return (
     <>
-        <div className="portfolio-card hover:cursor-pointer border-red-500 h-[50vh] p-5 flex flex-col justify-between bg-orange-50 rounded-lg">
+        <div className="portfolio-card hover:cursor-pointer border-red-500 h-[50vh] p-5 flex flex-col justify-between rounded-lg">
                 <img className='rounded-lg' src={image} alt="" />
                 <h3 className='text-center text-2xl font-semibold underline'>{Name}</h3>
                 <div className="card-buttons flex justify-center gap-5">
