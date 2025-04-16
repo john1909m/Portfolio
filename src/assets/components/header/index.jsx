@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <>
         <div className='cover-container'>
-            {/* <img className='' src="/images/creative_workspace_laptop_design_vs_code.jpg" alt="Cover photo" /> */}
+            <img className='' src="/images/creative_workspace_laptop_design_vs_code.jpg" alt="Cover photo" />
         
         </div>
 
