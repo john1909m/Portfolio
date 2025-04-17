@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState} from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import { FaHome, FaUser, FaBriefcase, FaGraduationCap, FaFlask, FaEnvelope, FaBrain } from 'react-icons/fa';
+import { FaHome, FaUser, FaBriefcase, FaGraduationCap, FaEnvelope, FaBrain } from 'react-icons/fa';
+import { GiSkills } from "react-icons/gi";
 import About from './assets/components/About'
 import Header from './assets/components/header'
 import { Portfolio } from './assets/components/Potfolio'
@@ -17,6 +18,7 @@ const [activeTab, setActiveTab] = useState('home');
   const tabs = [
     { id: 'home', icon: <FaHome size="20" />, label: 'Home' ,link:'#home' },
     { id: 'about', icon: <FaUser size="20" />, label: 'About',link:'#about' },
+    { id: 'skills', icon: <GiSkills size="20" />, label: 'Skills',link:'#about' },
     { id: 'portfolio', icon: <FaBriefcase size="20" />, label: 'Portfolio',link:'#portfolio' },
     { id: 'education', icon: <FaGraduationCap size="20" />, label: 'Education',link:'#education' },
     { id: 'contact', icon: <FaEnvelope size="20" />, label: 'Contact',link:'#home'}
@@ -29,6 +31,107 @@ const [activeTab, setActiveTab] = useState('home');
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+
+
+
+  // useEffect(() => {
+  //   const sections = document.querySelectorAll('div[id]');
+
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           setActiveTab(entry.target.id);
+  //         }
+  //       });
+  //     },
+  //     {
+  //       root: null,
+  //       threshold: 1, // section should be at least 50% visible
+  //     }
+  //   );
+
+  //   sections.forEach((section) => observer.observe(section));
+
+  //   return () => {
+  //     sections.forEach((section) => observer.unobserve(section));
+  //   };
+  // }, []);
+
+function scrollForDesktop(){
+  window.addEventListener("scroll",()=>{
+    if(window.scrollY<1*window.innerHeight){
+      setActiveTab('home')
+  
+    }
+    else if(window.scrollY>=1.2*window.innerHeight && window.scrollY < 1.6*window.innerHeight){
+      // console.log(2*window.innerHeight);
+      setActiveTab('about')
+      
+    }
+    else if(window.scrollY>=1.6*window.innerHeight && window.scrollY < 2.2*window.innerHeight){
+      // console.log(2*window.innerHeight);
+      setActiveTab('skills')
+      
+    }
+    else if(window.scrollY>=2.2*window.innerHeight && window.scrollY<3.2*window.innerHeight){
+      setActiveTab('portfolio')
+    
+    }
+    else if(window.scrollY>=3.2*window.innerHeight && window.scrollY<4.2*window.innerHeight){
+      setActiveTab('education')
+    
+    }
+    else if(window.scrollY>=4.2*window.innerHeight){
+      setActiveTab('contact')
+    
+    }
+  })
+}
+// scrollForDesktop()
+
+function scrollForMobiles(){
+  window.addEventListener("scroll",()=>{
+    if(window.scrollY<1*window.innerHeight){
+      setActiveTab('home')
+  
+    }
+    else if(window.scrollY>=1*window.innerHeight && window.scrollY < 1.8*window.innerHeight){
+      // console.log(2*window.innerHeight);
+      setActiveTab('about')
+      
+    }
+    else if(window.scrollY>=1.8*window.innerHeight && window.scrollY < 3*window.innerHeight){
+      // console.log(2*window.innerHeight);
+      setActiveTab('skills')
+      
+    }
+    else if(window.scrollY>=3*window.innerHeight && window.scrollY<7.1*window.innerHeight){
+      setActiveTab('portfolio')
+    
+    }
+    else if(window.scrollY>=7.1*window.innerHeight && window.scrollY<8*window.innerHeight){
+      setActiveTab('education')
+    
+    }
+    else if(window.scrollY>=8*window.innerHeight){
+      setActiveTab('contact')
+    
+    }
+  })
+}
+
+
+// scrollForMobiles()
+    // console.log("hello");
+
+if(window.innerWidth <= 627){
+  scrollForMobiles()
+}
+else{
+  scrollForDesktop()
+}
 
   return (
     <>

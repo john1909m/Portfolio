@@ -12,7 +12,11 @@ const About = () => {
         </div>
         <div className="about-content w-[80%]">
           <div className="about-text">
-            <p className='text-lg'>Front-End Developer, Graphic Designer, and Motion Designer with foundational skills in Linux. Known for creating compelling, user-centric designs that uphold brand integrity and enhance digital experiences. Aiming to leverage a unique blend of creative vision and technical acumen to drive innovative and impactful projects.</p>
+            <p className='text-lg'>Hey!👋 I’m a Front-End Developer, Graphic Designer, and Motion Designer who loves bringing ideas to life through clean code and eye-catching design. I focus on creating smooth, user-friendly websites and visuals that feel modern and meaningful.
+
+I work with tools like React, Figma, After Effects, and have a solid foundation in Linux. I enjoy combining design and development to create experiences that are both functional and visually engaging.
+
+I’m always curious, always improving, and always looking for new ways to make digital work more creative, more useful, and more fun. Whether it’s a simple animation or a full web app, I’m all in on the details that make a big difference.</p>
           </div>
             <div className='h-[5vh]'></div>
 
