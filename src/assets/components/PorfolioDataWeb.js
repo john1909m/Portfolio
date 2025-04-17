@@ -47,11 +47,6 @@ export const Web=[
 
 export const Graphic=[
 
-
-    {
-        id:3,
-        image:"/images/graphic images/cat butterfly.webp"
-    },
     {
         id:4,
         image:"/images/graphic images/christmas tree dress.webp"
@@ -68,14 +63,7 @@ export const Graphic=[
         id:7,
         image:"/images/graphic images/headphone wave.webp"
     },
-    {
-        id:8,
-        image:"/images/graphic images/ketchup.webp"
-    },
-    {
-        id:9,
-        image:"/images/graphic images/max muscle.webp"
-    },
+
 
     {
         id:12,
@@ -85,10 +73,7 @@ export const Graphic=[
         id:13,
         image:"/images/graphic images/rhino crystal 2.webp"
     },
-    {
-        id:14,
-        image:"/images/graphic images/robot manipulation.webp"
-    },
+
     {
         id:15,
         image:"/images/graphic images/team zikry.webp"
