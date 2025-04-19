@@ -11,8 +11,8 @@ export const Skills = () => {
           
         </div>
             <div className='h-[5vh]'></div>
-        <div className="skills-box border-4 py-6 flex justify-evenly rounded-2xl bg- border-orange-500 md:w-[70%] sm:w-[90%]">
-            <ul className='flex flex-wrap justify-center w-[80%] gap-10 text-2xl font-semibold'>
+        <div className="skills-box border-4 py-6 flex justify-evenly rounded-2xl bg- border-orange-500 md:w-[70%] sm:w-[100%]">
+            <ul className='flex flex-wrap justify-center sm:w-[90%] md:w-[80%] gap-8 text-2xl font-semibold'>
                 <li>HTML</li>
                 <li>CSS</li>
                 <li>Javascript</li>
