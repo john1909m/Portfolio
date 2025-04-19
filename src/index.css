@@ -29,12 +29,12 @@ body{
   top: 55%;
   /* display: none; */
   right: 20%;
-  animation: icons 3s infinite alternate ease-in-out, blurEffect 4s alternate-reverse
+  animation: icons 2.5s infinite alternate ease-in-out, blurEffect 4s alternate-reverse
    infinite;
 }
 @keyframes icons{
-  0%   { transform: rotate(0deg) translateX(200px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+  0%   { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
 }
 
 @keyframes blurEffect {
