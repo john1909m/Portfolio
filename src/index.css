@@ -15,3 +15,29 @@ body{
    
 
 }
+
+
+.animation-html:nth-child(3){
+  position: absolute;
+  top: 70%;
+  left: 20%;
+  animation: icons 2s infinite alternate-reverse ease-in-out ,blurEffect 4s alternate infinite;
+}
+.animation-html:nth-child(2){
+  position: absolute;
+  top: 55%;
+  /* display: none; */
+  right: 20%;
+  animation: icons 3s infinite alternate ease-in-out, blurEffect 4s alternate-reverse
+   infinite;
+}
+@keyframes icons{
+  0%   { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+}
+
+@keyframes blurEffect {
+  0%, 100%   { filter: blur(0.5px); }
+  25%, 75%   { filter: blur(1.5px); }
+  50%        { filter: blur(3px); }
+}

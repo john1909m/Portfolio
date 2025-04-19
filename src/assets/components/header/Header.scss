@@ -12,6 +12,42 @@
 
 
 }
+
+.My-name::after{
+    content: "";
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url(/images/sunglasses-svgrepo-com.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+    transform: rotateY(180deg);
+    vertical-align: middle;
+    animation: nameGlasses 0.4s alternate infinite;
+}
+@keyframes nameGlasses{
+    0%{transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(30deg);
+    }
+}
+.My-name::before{
+    content: "";
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url(/images/sunglasses-svgrepo-com.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    vertical-align: middle;
+    animation: nameGlasses 0.4s alternate infinite;
+
+}
+
+
 .cover-container img{
     width: 100%;
     transform: translateY(-15%);

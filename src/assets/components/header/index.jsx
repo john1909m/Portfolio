@@ -18,8 +18,8 @@ const Header = () => {
                 <div className="profile-info flex flex-col">
                     
 
-                <h1 className='text-5xl font-bold mb-4'>John Emil</h1>
-                <h3 className='text-2xl text-orange-500 font-semibold'>Front-End Developer & Graphic Designer</h3>
+                <h1 className='My-name sm:text-4xl md:text-5xl font-bold mb-4'>John Emil</h1>
+                <h3 className='text-2xl text-orange-500 font-semibold'>Front-End Developer (React.Js) & Graphic Designer</h3>
                 <div className='h-[5vh]'></div>
                 <p className='text-lg mb-2'><strong>✉️Email: </strong>johnemil21@yahoo.com</p>
                 <p className='text-lg mb-2'><strong>📞Phone: </strong>+201200158852</p>

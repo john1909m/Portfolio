@@ -136,6 +136,8 @@ else{
   return (
     <>
       <div id='home'><Header></Header></div>
+      <img src="/images/vscode-svgrepo-com.svg" className='animation-html w-[150px]'alt="" />
+      <img src="/public/images/adobe-illustrator-svgrepo-com.svg" className='animation-html w-[150px]'alt="" />
       <div id='about'><About></About></div>
       <div className='h-[5vh]'></div>
       <div id='skills'><Skills></Skills></div>
