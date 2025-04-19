@@ -10,7 +10,7 @@ const About = () => {
           <h2 className='font-bold text-3xl'>About me</h2>
           
         </div>
-        <div className="about-content md:w-[80%] sm:w-[110%]">
+        <div className="about-content md:w-[80%] sm:w-[100%]">
           <div className="about-text">
             <p className='text-lg'>Hey!👋 I’m a Front-End Developer, Graphic Designer, and Motion Designer who loves bringing ideas to life through clean code and eye-catching design. I focus on creating smooth, user-friendly websites and visuals that feel modern and meaningful.
 
