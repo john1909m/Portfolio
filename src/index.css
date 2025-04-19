@@ -13,7 +13,7 @@ body{
     /* background-color: #e6ecf0; */
     background-color: #f0f4ff;
    
-
+  overflow: hidden;
 }
 
 
@@ -21,6 +21,7 @@ body{
   position: absolute;
   top: 70%;
   left: 20%;
+
   animation: icons 2s infinite alternate-reverse ease-in-out ,blurEffect 4s alternate infinite;
 }
 .animation-html:nth-child(2){
