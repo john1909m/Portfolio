@@ -2,6 +2,13 @@ import React from 'react'
 
 export const Web=[
     {
+        id:"0",
+        image:"/images/Screenshot 2025-05-16 003927.png",
+        Name:"Essance",
+        gitHub:"https://github.com/john1909m/Essence.git",
+        liveDemo:"https://essence1.netlify.app/" ,
+    },
+    {
         id:"1",
         image:"/images/Screenshot 2025-04-12 001802.webp",
         Name:"Educator",
