@@ -10,6 +10,8 @@ import { Portfolio } from './assets/components/Potfolio'
 import { Education } from './assets/components/Education'
 import { Skills } from './assets/components/Skills'
 import Footer from './assets/components/Footer'
+import ThemeToggle from './assets/components/ThemeToggle'
+import BackgroundParticles from './assets/components/BackgroundParticles'
 // import Navbar from './assets/components/Navbar'
 import { Contact } from './assets/components/Contact';
 function App() {
@@ -135,9 +137,9 @@ else{
 
   return (
     <>
+      <BackgroundParticles />
+      <ThemeToggle />
       <div id='home'><Header></Header></div>
-      <img src="/images/vscode-svgrepo-com.svg" className='animation-html w-[150px]'alt="" />
-      <img src="/images/adobe-illustrator-svgrepo-com.svg" className='animation-html w-[150px]'alt="" />
       <div id='about'><About></About></div>
       <div className='h-[5vh]'></div>
       <div id='skills'><Skills></Skills></div>

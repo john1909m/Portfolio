@@ -30,6 +30,14 @@
   max-width: 500px;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+/* Dark mode styles for navbar */
+.dark .mobile-navbar {
+  background: rgba(17, 24, 39, 0.7);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-item {
@@ -65,12 +73,20 @@
   transition: all 0.3s ease;
 }
 
+.dark .nav-icon {
+  color: #f1f5f9;
+}
+
 .nav-label {
   font-size: 0.7rem;
   font-weight: 600;
   margin-top: 3px;
   color: #5555555f;
   transition: all 0.3s ease;
+}
+
+.dark .nav-label {
+  color: rgba(241, 245, 249, 0.6);
 }
 
 /* Active State */
@@ -85,15 +101,28 @@
   box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
 }
 
+.dark .nav-item.active .nav-icon {
+  background: linear-gradient(145deg, #FF6E2C, #FF9F45);
+  box-shadow: 0 5px 15px rgba(255, 110, 44, 0.4);
+}
+
 .nav-item.active .nav-label {
   color: #3a86ff;
   transform: scale(1.1);
+}
+
+.dark .nav-item.active .nav-label {
+  color: #FF6E2C;
 }
 
 /* Hover Effects */
 .nav-item:hover .nav-icon {
   transform: scale(1.1);
   background: rgba(58, 134, 255, 0.1);
+}
+
+.dark .nav-item:hover .nav-icon {
+  background: rgba(255, 110, 44, 0.2);
 }
 
 /* Animations */

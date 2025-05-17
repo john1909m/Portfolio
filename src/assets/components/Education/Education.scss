@@ -1,3 +1,105 @@
 .education-points{
     list-style:square
 }
+
+.education-timeline {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to bottom, transparent, #f97316, #f97316, #f97316, transparent);
+    opacity: 0.7;
+    animation: pulse-line 3s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse-line {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.education-card {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #f97316;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.education-card-content {
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(5px);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  
+  &:hover::before {
+    transform: translateX(100%);
+  }
+}
+
+.absolute.rounded-full {
+  transition: all 0.3s ease;
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+.education-card:nth-child(1) .absolute.rounded-full {
+  animation-delay: 0s;
+}
+
+.education-card:nth-child(2) .absolute.rounded-full {
+  animation-delay: 0.5s;
+}
+
+.education-card:nth-child(3) .absolute.rounded-full {
+  animation-delay: 1s;
+}
+
+.education-card-content:hover {
+  .text-orange-500 {
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.5);
+  }
+}

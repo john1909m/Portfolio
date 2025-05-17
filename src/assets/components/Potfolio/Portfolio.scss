@@ -3,6 +3,123 @@
     justify-content: space-between;
 }
 
+.portfolio-section {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.03) 0%, transparent 30%),
+      radial-gradient(circle at 90% 80%, rgba(30, 64, 175, 0.03) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.portfolio-header {
+  position: relative;
+  z-index: 1;
+}
+
+.tab-container {
+  transition: all 0.3s ease;
+  
+  .tab-button {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    
+    &:hover::before {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.portfolio-content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-description {
+  h3 {
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, #f97316, transparent);
+    }
+  }
+}
+
+.portfolio-grid {
+  transition: all 0.5s ease-in-out;
+  
+  > div {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Stagger animations for each portfolio item
+@for $i from 1 through 20 {
+  .portfolio-grid > div:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.05}s;
+  }
+}
+
+.view-all-projects {
+  a {
+    position: relative;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      
+      .ml-2 {
+        animation: arrowBounce 1s infinite;
+      }
+    }
+  }
+}
+
+@keyframes arrowBounce {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
 
 @media screen and (max-width:776px){
     .portfolio-head{
@@ -21,4 +138,32 @@
     .portfolio-catergory{
         width: 100%;
     }
+}
+
+@media screen and (max-width: 776px) {
+  .tab-container {
+    flex-direction: column;
+    width: 100%;
+    
+    .tab-button {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  .portfolio-header {
+    align-items: center;
+    text-align: center;
+    
+    .portfolio-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }

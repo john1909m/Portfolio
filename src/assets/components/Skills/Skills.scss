@@ -1,164 +1,187 @@
-.skills-box ul li:nth-child(1)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/html-5-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+/* Skills Section Styling */
+
+/* Category Nav Animations */
+.category-btn {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+  }
+  
+  &:hover::before {
+    transform: translateX(100%);
+  }
+  
+  &:active {
+    transform: scale(0.97);
+  }
 }
 
-
-
-.skills-box ul li:nth-child(2)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/css-3-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+/* Skills Card Animation */
+.skills-category-container {
+  position: relative;
 }
 
-
-.skills-box ul li:nth-child(3)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/javascript-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 126, 0, 0.03) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transform: scale(0.8);
+    z-index: -1;
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  animation: fadeInUp 0.6s forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
-
-
-.skills-box ul li:nth-child(4)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/react-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+/* Staggered animation delay for cards */
+@for $i from 0 through 10 {
+  .skill-card-#{$i} {
+    animation-delay: #{$i * 0.1}s;
+  }
 }
 
-
-
-
-.skills-box ul li:nth-child(5)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/vite-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-
-
-
-.skills-box ul li:nth-child(6)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/github-142-svgrepo-com\ \(1\).svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+/* Skill Icon Animation */
+.skill-icon {
+  transition: all 0.3s ease;
+  
+  img {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 }
 
-
-
-
-
-.skills-box ul li:nth-child(7)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/photoshop-cc-logo-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+.skill-card:hover .skill-icon {
+  transform: scale(1.1);
+  
+  img {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.5));
+  }
 }
 
-
-
-
-.skills-box ul li:nth-child(8)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/adobe-illustrator-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+/* Progress Bar Animation */
+.skill-progress-bar {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #f97316;
+    border-radius: 50%;
+    transform: translateY(-3px);
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.6);
+  }
 }
 
-
-
-
-.skills-box ul li:nth-child(9)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/adobe-premiere-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+/* Percentage counter animation */
+.percentage-display {
+  position: relative;
+  min-width: 25px;
+  text-align: right;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+    animation: lineGrow 2s ease-in-out infinite;
+  }
 }
 
-
-
-
-
-.skills-box ul li:nth-child(10)::before{
-    content: "";
-  display: inline-block;
-  width: 50px; /* Set icon width */
-  height: 50px; /* Set icon height */
-  background-image: url('/images/after-effects-cc-logo-svgrepo-com.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  vertical-align: middle;
+/* Dark Mode Enhancement */
+.dark .skill-card {
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  
+  &:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
+                0 0 0 1px rgba(249, 115, 22, 0.3);
+  }
 }
 
-
-
-
-
-
-
-
-
-
-.skills-box:hover.skills-box ul li::before{
-    
-        transform: rotateY(720deg) scale(1.1);
-    transition: all 1s ease-in-out;
-    
+/* Light Mode Enhancement */
+.skill-card {
+  backdrop-filter: blur(5px);
+  
+  &:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(249, 115, 22, 0.2);
+  }
 }
-.skills-box:hover.skills-box ul li{
-    transform: scale(1.04);
-    transition: all 1s ease-in-out;
+
+/* Category Nav Animation */
+.category-nav {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Skill Level Text Animation */
+.skill-level {
+  span:last-child {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+}
+
+@keyframes lineGrow {
+  0%, 100% { transform: scaleX(0.3); opacity: 0.3; }
+  50% { transform: scaleX(1); opacity: 1; }
+}
+
+/* Skills Display Animation */
+.skills-display {
+  position: relative;
 }
