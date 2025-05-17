@@ -33,7 +33,7 @@ const Header = () => {
                 </div>
                 <div className='h-[3vh]'></div>
 
-                    <a href="https://drive.google.com/file/d/1XBsGcMrIB9oeeDLS9wDxapu3gfR-oFhB/view" target='blank'><button className='bg-orange-500 text-black p-5 rounded-xl font-bold text-[16px] hover:bg-transparent hover:border-[1px] hover:text-orange-500 hover:border-orange-500 transition-all hover:translate-y-2 hover:scale-110'>Download CV</button></a>
+                    <a href="https://drive.google.com/file/d/118MmjR5vW9WNxre-y199NCZJMbN02tBA/view?usp=sharing" target='blank'><button className='bg-orange-500 text-black p-5 rounded-xl font-bold text-[16px] hover:bg-transparent hover:border-[1px] hover:text-orange-500 hover:border-orange-500 transition-all hover:translate-y-2 hover:scale-110'>Download CV</button></a>
 
                 </div>
 
