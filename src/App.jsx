@@ -6,6 +6,7 @@ import { FaHome, FaUser, FaBriefcase, FaGraduationCap, FaEnvelope, FaBrain } fro
 import { GiSkills } from "react-icons/gi";
 import ThemeToggle from './assets/components/ThemeToggle'
 import BackgroundParticles from './assets/components/BackgroundParticles'
+import WelcomeScreen from './assets/components/WelcomeScreen'
 // import Navbar from './assets/components/Navbar'
 import { Contact } from './assets/components/Contact';
 
@@ -39,6 +40,8 @@ NavButton.displayName = 'NavButton';
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [isMobile, setIsMobile] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
+  const [showContent, setShowContent] = useState(false);
 
   const tabs = [
     { id: 'home', icon: <FaHome size="20" />, label: 'Home', link: '#home' },
@@ -130,71 +133,79 @@ function App() {
 
   return (
     <Suspense fallback={<LoadingFallback />}>
-      <BackgroundParticles />
-      <ThemeToggle />
-      
-      <main>
-        <div id='home'>
-          <Suspense fallback={<LoadingFallback />}>
-            <Header />
-          </Suspense>
-        </div>
-        
-        <div id='about'>
-          <Suspense fallback={<LoadingFallback />}>
-            <About />
-          </Suspense>
-        </div>
-        <div className='h-[5vh]'></div>
-        
-        <div id='skills'>
-          <Suspense fallback={<LoadingFallback />}>
-            <Skills />
-          </Suspense>
-        </div>
-        <div className='h-[5vh]'></div>
-        
-        <div id='portfolio'>
-          <Suspense fallback={<LoadingFallback />}>
-            <Portfolio />
-          </Suspense>
-        </div>
-        <div className='h-[5vh]'></div>
-        
-        <div id="education">
-          <Suspense fallback={<LoadingFallback />}>
-            <Education />
-          </Suspense>
-        </div>
-        <div className='h-[7vh]'></div>
-        
-        <div id='contact'>
-          <Suspense fallback={<LoadingFallback />}>
-            <Contact />
-          </Suspense>
-        </div>
-        <div className='h-[10vh]'></div>
-        
-        <Suspense fallback={<div></div>}>
-          <Footer />
-        </Suspense>
-      </main>
-      
-      <div className="navbar-wrapper">
-        <nav className="mobile-navbar">
-          {tabs.map((tab) => (
-            <NavButton
-              key={tab.id}
-              tab={tab}
-              activeTab={activeTab}
-              onClick={() => {
-                setActiveTab(tab.id);
-                scrollToSection(tab.id);
-              }}
-            />
-          ))}
-        </nav>
-      </div>
+      {showWelcome && <WelcomeScreen onComplete={() => {
+        setShowWelcome(false);
+        setShowContent(true);
+      }} />}
+      {showContent && (
+        <>
+          <BackgroundParticles />
+          <ThemeToggle />
+          
+          <main>
+            <div id='home'>
+              <Suspense fallback={<LoadingFallback />}>
+                <Header />
+              </Suspense>
+            </div>
+            
+            <div id='about'>
+              <Suspense fallback={<LoadingFallback />}>
+                <About />
+              </Suspense>
+            </div>
+            <div className='h-[5vh]'></div>
+            
+            <div id='skills'>
+              <Suspense fallback={<LoadingFallback />}>
+                <Skills />
+              </Suspense>
+            </div>
+            <div className='h-[5vh]'></div>
+            
+            <div id='portfolio'>
+              <Suspense fallback={<LoadingFallback />}>
+                <Portfolio />
+              </Suspense>
+            </div>
+            <div className='h-[5vh]'></div>
+            
+            <div id="education">
+              <Suspense fallback={<LoadingFallback />}>
+                <Education />
+              </Suspense>
+            </div>
+            <div className='h-[7vh]'></div>
+            
+            <div id='contact'>
+              <Suspense fallback={<LoadingFallback />}>
+                <Contact />
+              </Suspense>
+            </div>
+            <div className='h-[10vh]'></div>
+            
+            <Suspense fallback={<div></div>}>
+              <Footer />
+            </Suspense>
+          </main>
+          
+          <div className="navbar-wrapper">
+            <nav className="mobile-navbar">
+              {tabs.map((tab) => (
+                <NavButton
+                  key={tab.id}
+                  tab={tab}
+                  activeTab={activeTab}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    scrollToSection(tab.id);
+                  }}
+                />
+              ))}
+            </nav>
+          </div>
+        </>
+      )}
     </Suspense>
   );
 }
