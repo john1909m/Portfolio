@@ -3,53 +3,61 @@ import React from 'react'
 export const Web=[
     {
         id:"0",
+        image:"/images/Screenshot 2026-04-13 191611.png",
+        Name:"Storely-eg (Muilti store E-commerce)",
+        gitHub:"https://github.com/john1909m/Storely.git",
+        liveDemo:"https://storely-eg.com" ,
+    },
+    {
+        id:"1",
         image:"/images/Screenshot 2025-05-16 003927.png",
         Name:"Essance",
         gitHub:"https://github.com/john1909m/Essence.git",
         liveDemo:"https://essence1.netlify.app/" ,
     },
     {
-        id:"1",
+        id:"2",
         image:"/images/Screenshot 2025-04-12 001802.webp",
         Name:"Educator",
         gitHub:"https://github.com/john1909m/Educator.git",
         liveDemo:"https://educator5.netlify.app/" ,
     },
     {
-        id:"2",
+        id:"3",
         image:"/images/Screenshot 2025-04-14 142545.png",
         Name:"E-Trades",
         gitHub:"https://github.com/john1909m/E-commerce.git",
         liveDemo:"https://e-trades.netlify.app/" ,
     },
     {
-        id:"3",
+        id:"4",
         image:"/images/Screenshot 2025-04-14 142703.png",
         Name:"Games Studio",
         gitHub:"https://github.com/john1909m/game.studio.git",
         liveDemo:"https://gamelibraryp.netlify.app/" ,
     },
     {
-        id:"4",
+        id:"5",
         image:"/images//Screenshot 2025-04-14 142838.png",
         Name:"Kasper",
         gitHub:"https://github.com/john1909m/Kasper.git",
         liveDemo:"https://kasper-live.netlify.app/" ,
     },
     {
-        id:"5",
+        id:"6",
         image:"/images/Screenshot 2025-04-14 143044.png",
         Name:"El-Akeel",
         gitHub:"https://github.com/john1909m/El-Akeel.git",
         liveDemo:"https://el-akeel.netlify.app/" ,
     },
     {
-        id:"6",
+        id:"7",
         image:"/images/Screenshot 2025-04-14 142955.png",
         Name:"CRUDS System",
         gitHub:"https://github.com/john1909m/Product-List.git",
         liveDemo:"https://products4list.netlify.app/" ,
     },
+    
 ]
 
 export const Graphic=[
@@ -89,4 +97,21 @@ export const Graphic=[
         id:16,
         image:"/images/graphic images/woman vector 1.webp"
     },
+
+    {
+        id:17,
+        image:"/images/graphic images/graphic design post 1 simple.jpg"
+    },
+    {
+        id:18,
+        image:"/images/graphic images/offer post.jpg"
+    },
+    {
+        id:19,
+        image:"/images/graphic images/post 3 final.jpg"
+    },
+    {
+        id:20,
+        image:"/images/graphic images/post publish.jpg"
+    }
 ]

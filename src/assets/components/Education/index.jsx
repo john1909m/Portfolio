@@ -40,6 +40,17 @@ export const Education = () => {
                     <p className='text-md text-gray-400'>Experienced in front-end development with hands-on training in HTML, CSS, Javascript and UI design through structured course projects.</p>
                   </div>
                 </div>
+
+                <div className="education-card mb-10 relative">
+                  <div className="absolute -left-[41px] top-0 w-10 h-10 bg-blue-900 rounded-full border-4 border-orange-500 flex items-center justify-center text-orange-400">
+                    <FaCode className="text-lg" />
+                  </div>
+                  <div className="education-card-content p-6 rounded-lg bg-blue-900/50 border border-blue-800 hover:border-orange-500/50 shadow-lg transition-all duration-300 hover:shadow-orange-900/20 hover:-translate-y-1">
+                    <h2 className='text-2xl font-semibold mb-2'>Back-End Development</h2>
+                    <h3 className='text-lg text-orange-500 mb-1'>Eraasoft Academy</h3>
+                    <p className='text-md text-gray-400'>Experienced in back-end development with hands-on training in Java, Spring Boot, and database management through structured course projects.</p>
+                  </div>
+                </div>
                 
                 <div className="education-card relative">
                   <div className="absolute -left-[41px] top-0 w-10 h-10 bg-blue-900 rounded-full border-4 border-orange-500 flex items-center justify-center text-orange-400">

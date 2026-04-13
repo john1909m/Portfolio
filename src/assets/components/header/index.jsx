@@ -33,7 +33,7 @@ const Header = () => {
 
           <div className="profile-info flex flex-col mt-6">
             <h1 className='My-name sm:text-4xl md:text-5xl font-bold mb-4 text-center'>John Emil</h1>
-            <h3 className='text-2xl text-orange-500 font-semibold text-center'>Front-End Developer (React.Js) & Graphic Designer</h3>
+            <h3 className='text-2xl text-orange-500 font-semibold text-center'>Software Engineer<br />Full-Stack Developer (React.Js & Spring Boot)<br />Graphic Designer</h3>
             
             <div className={`my-8 h-[1px] w-[80%] mx-auto ${isDarkMode ? 'bg-gradient-to-r from-transparent via-gray-700 to-transparent' : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'}`}></div>
             
@@ -59,7 +59,7 @@ const Header = () => {
             </div>
             <div className='h-[3vh]'></div>
 
-            <a href="https://drive.google.com/file/d/10NNYek2WbcDRPT51JoPnEWHFSbEz5zuE/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="mx-auto">
+            <a href="https://drive.google.com/file/d/14-9kLHzFCSTEI70vbOI5e0xJogHqaV3Q/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="mx-auto">
               <button className={`bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 px-8 rounded-xl font-bold text-[16px] hover:from-transparent hover:to-transparent border border-transparent hover:border-orange-500 hover:text-orange-500 transition-all hover:translate-y-1 hover:scale-105 ${isDarkMode ? 'hover:shadow-dark-glow' : 'hover:shadow-light-glow'}`}>
                 Download CV
               </button>

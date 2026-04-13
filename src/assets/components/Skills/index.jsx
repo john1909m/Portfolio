@@ -69,14 +69,19 @@ export const Skills = () => {
   const skillCategories = [
     {
       id: 'frontend',
-      title: 'Frontend',
+      title: 'Web Development',
       icon: <FaCode />,
       skills: [
         { name: 'HTML', level: 90, icon: '/images/html-5-svgrepo-com.svg' },
         { name: 'CSS', level: 85, icon: '/images/css-3-svgrepo-com.svg' },
         { name: 'Javascript', level: 80, icon: '/images/javascript-svgrepo-com.svg' },
         { name: 'React.Js', level: 85, icon: '/images/react-svgrepo-com.svg' },
-        { name: 'Vite.Js', level: 75, icon: '/images/vite-svgrepo-com.svg' }
+        { name: 'Vite.Js', level: 75, icon: '/images/vite-svgrepo-com.svg' },
+        { name: 'Tailwind CSS', level: 80, icon: '/images/tailwind-svgrepo-com.svg' },
+        { name: 'Java', level: 85, icon: '/images/java-svgrepo-com.svg' },
+        { name: 'Spring Boot', level: 80, icon: '/images/spring-boot-svgrepo-com.svg' },
+        { name: 'Oracle DB', level: 60, icon: '/images/database-svgrepo-com.svg' },
+        
       ]
     },
     {
@@ -85,7 +90,11 @@ export const Skills = () => {
       icon: <FaDesktop />,
       skills: [
         { name: 'Git & GitHub', level: 80, icon: '/images/github-142-svgrepo-com (1).svg' },
-        { name: 'Responsive Design', level: 85, icon: '/images/responsive-design-svgrepo-com.svg' }
+        { name: 'Responsive Design', level: 85, icon: '/images/responsive-design-svgrepo-com.svg' },
+        { name : 'postman', level: 80, icon: '/images/postman-icon-svgrepo-com.svg' },
+        { name: 'swagger', level: 75, icon: '/images/swagger-svgrepo-com.svg' }
+        
+         
       ]
     },
     {

@@ -20,20 +20,28 @@ const AboutContent = memo(({ isDarkMode }) => (
       />
       
       <p className="text-md sm:text-lg mb-4">
-        Hey!👋 I'm a Front-End Developer, Graphic Designer, and Motion Designer who loves bringing ideas to life through clean code and eye-catching design. I focus on creating smooth, user-friendly websites and visuals that feel modern and meaningful.
+        Hey! 👋 I'm a Full Stack Developer specializing in Java Spring Boot and React.js, with a strong background in Graphic Design and Motion Design.
       </p>
       
       <div className={`h-[1px] w-full mb-4 ${isDarkMode ? 'bg-blue-700/20' : 'bg-orange-200/30'}`}></div>
       
       <p className="text-md sm:text-lg mb-4">
-        I work with tools like React, Photoshop, and have a solid foundation in Linux. I enjoy combining design and development to create experiences that are both functional and visually engaging.
+       I enjoy building scalable web applications from backend to frontend, while also crafting clean, visually engaging user interfaces. My work is all about combining solid engineering with creative design to deliver experiences that are both functional and eye-catching.
       </p>
       
       <div className={`h-[1px] w-full mb-4 ${isDarkMode ? 'bg-blue-700/20' : 'bg-orange-200/30'}`}></div>
       
       <p className="text-md sm:text-lg">
-        I'm always curious, always improving, and always looking for new ways to make digital work more creative, more useful, and more fun. Whether it's a simple animation or a full web app, I'm all in on the details that make a big difference.
+        I focus on writing clean, maintainable code and designing intuitive, modern UIs that feel smooth and meaningful. Whether I'm developing RESTful APIs or designing visuals and animations, I care about the small details that make a big difference.
       </p>
+
+      <div className={`h-[1px] w-full mb-4 ${isDarkMode ? 'bg-blue-700/20' : 'bg-orange-200/30'}`}></div>
+      
+      <p className="text-md sm:text-lg">
+        I'm always curious, always improving, and always exploring new ways to blend design and development into impactful digital products.
+      </p>
+
+
     </div>
   </div>
 ));
