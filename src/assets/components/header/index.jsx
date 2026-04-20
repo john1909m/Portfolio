@@ -59,7 +59,7 @@ const Header = () => {
             </div>
             <div className='h-[3vh]'></div>
 
-            <a href="https://drive.google.com/file/d/14-9kLHzFCSTEI70vbOI5e0xJogHqaV3Q/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="mx-auto">
+            <a href="https://drive.google.com/file/d/11qHy51xwlOFWSZwTNJqdA2lm0SHbBu8h/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="mx-auto">
               <button className={`bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 px-8 rounded-xl font-bold text-[16px] hover:from-transparent hover:to-transparent border border-transparent hover:border-orange-500 hover:text-orange-500 transition-all hover:translate-y-1 hover:scale-105 ${isDarkMode ? 'hover:shadow-dark-glow' : 'hover:shadow-light-glow'}`}>
                 Download CV
               </button>
