@@ -1,0 +1,89 @@
+/* Design System — Navy → Teal professional palette */
+:root {
+  /* Primary gradient anchors */
+  --color-primary-900: #0f172a;
+  --color-primary-800: #1e293b;
+  --color-primary-700: #334155;
+  --color-accent: #0891b2;
+  --color-accent-hover: #0e7490;
+  --color-indigo: #4f46e5;
+
+  /* Light theme */
+  --bg-base: #f8fafc;
+  --bg-muted: #f1f5f9;
+  --bg-elevated: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: rgba(15, 23, 42, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --nav-bg: rgba(248, 250, 252, 0.92);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 24px -12px rgba(15, 23, 42, 0.12);
+  --gradient-primary: linear-gradient(135deg, #1e293b 0%, #4f46e5 50%, #0891b2 100%);
+  --gradient-text: linear-gradient(135deg, #1e293b, #4f46e5, #0891b2);
+  --gradient-orb: radial-gradient(circle at 70% 20%, rgba(79, 70, 229, 0.12), transparent 50%);
+
+  /* Typography — system stack for performance */
+  --font-heading: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.82rem + 0.25vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.75vw, 2.5rem);
+  --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
+
+  /* Spacing (4px scale) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Layout */
+  --max-width: 1280px;
+  --gap-mobile: 16px;
+  --gap-desktop: 24px;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 1.5rem;
+  --header-height: 4rem;
+  --nav-offset: 5rem;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 250ms;
+  --focus-ring: 0 0 0 3px rgba(8, 145, 178, 0.45);
+}
+
+.dark {
+  --bg-base: #0f172a;
+  --bg-muted: #1e293b;
+  --bg-elevated: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: rgba(248, 250, 252, 0.08);
+  --card-bg: rgba(30, 41, 59, 0.95);
+  --nav-bg: rgba(15, 23, 42, 0.94);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 12px 24px -12px rgba(0, 0, 0, 0.4);
+  --gradient-orb: radial-gradient(circle at 30% 10%, rgba(79, 70, 229, 0.18), transparent 45%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+  }
+}

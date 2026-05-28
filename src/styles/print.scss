@@ -1,0 +1,35 @@
+@media print {
+  .site-nav,
+  .navbar-wrapper,
+  .theme-toggle,
+  .skip-link,
+  .welcome-screen,
+  .particle,
+  .background-particles {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    overflow: visible !important;
+  }
+
+  main section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.75rem;
+    color: #475569;
+  }
+
+  .card,
+  .profile-card,
+  .personal-card {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+}

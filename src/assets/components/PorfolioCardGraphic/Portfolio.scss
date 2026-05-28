@@ -1,0 +1,74 @@
+// تحسين الـ Grid بشكل عام
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+// تحسين الـ Load More Button
+.load-more-wrapper {
+  text-align: center;
+  margin: 40px 0;
+  
+  .load-more-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    
+    &.light {
+      background: white;
+      color: #fb923c;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(251, 146, 60, 0.3);
+      }
+    }
+    
+    &.dark {
+      background: rgba(30, 30, 40, 0.9);
+      color: #8b5cf6;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+      }
+    }
+    
+    .btn-icon {
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover .btn-icon {
+      transform: translateX(5px);
+    }
+  }
+  
+  .load-more-info {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+}

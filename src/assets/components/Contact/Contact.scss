@@ -1,0 +1,231 @@
+.contact {
+  &__grid {
+    display: grid;
+    gap: var(--gap-mobile);
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--gap-desktop);
+    }
+  }
+
+  &__cards {
+    list-style: none;
+    margin: 0 0 var(--space-4);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  &__card {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+
+    > svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    strong {
+      display: block;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-1);
+    }
+
+    a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: var(--text-sm);
+
+      &:hover {
+        color: var(--color-accent);
+      }
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: var(--focus-ring);
+        border-radius: 2px;
+      }
+    }
+  }
+
+  &__availability {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+
+    > svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    p {
+      margin: var(--space-2) 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: #059669;
+  }
+
+  &__status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+  }
+
+  &__social {
+    display: flex;
+    gap: var(--space-3);
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      transition: transform var(--duration-fast) var(--ease-standard);
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: var(--focus-ring);
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          transform: translateY(-2px);
+          color: var(--color-accent);
+        }
+      }
+    }
+  }
+
+  &__form-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-6);
+  }
+
+  &__success {
+    margin-top: var(--space-4);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+
+  &__note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-8);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      color: var(--color-accent);
+    }
+  }
+}
+
+.contact-form {
+  &__group {
+    margin-bottom: var(--space-4);
+  }
+
+  &__label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+
+  &__required {
+    color: #dc2626;
+  }
+
+  &__input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    font-size: var(--text-base);
+    font-family: var(--font-body);
+    transition: border-color var(--duration-fast) var(--ease-standard);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: var(--focus-ring);
+    }
+
+    &--error {
+      border-color: #dc2626;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__error {
+    display: block;
+    margin-top: var(--space-2);
+    font-size: var(--text-xs);
+    color: #dc2626;
+  }
+
+  &__submit {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border: none;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+  }
+}

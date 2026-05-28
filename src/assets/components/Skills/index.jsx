@@ -1,208 +1,209 @@
-import React, { useContext, useState, useEffect, useRef, memo } from 'react'
-import "./Skills.scss"
-import { ThemeContext } from '../../../ThemeContext'
-import { FaCode, FaDesktop, FaPalette, FaLayerGroup } from 'react-icons/fa'
+import { memo, useState, useCallback, useEffect, useRef, useContext } from 'react';
+import {
+  HiOutlineCodeBracket,
+  HiOutlineComputerDesktop,
+  HiOutlinePaintBrush,
+  HiOutlineFilm,
+  HiOutlineBolt,
+  HiOutlineSparkles,
+  HiOutlineCpuChip,
+} from 'react-icons/hi2';
+import { ThemeContext } from '../../../ThemeContext';
+import './Skills.scss';
 
-// Memoize the skill card component to prevent unnecessary re-renders
-const SkillCard = memo(({ skill, index, isDarkMode, isVisible }) => {
-  return (
-    <div 
-      className={`skill-card p-4 rounded-xl backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-2 ${
-        isDarkMode 
-          ? 'bg-blue-900/30 border border-blue-800/50 hover:border-orange-500/70' 
-          : 'bg-white/90 border border-gray-200/80 hover:border-orange-500/70'
-      } skill-card-${index}`}
-    >
-      <div className="skill-icon-wrapper mb-3 relative">
-        <div className={`skill-icon-bg absolute inset-0 rounded-full blur-md opacity-20 ${
-          isDarkMode ? 'bg-orange-500' : 'bg-orange-400'
-        }`}></div>
-        <div className="skill-icon relative flex items-center justify-center w-12 h-12 mx-auto">
-          <img 
-            src={skill.icon} 
-            alt={skill.name} 
-            width="28"
-            height="28"
-            loading="lazy"
-            className="w-7 h-7 object-contain skill-icon-img"
-          />
-        </div>
-      </div>
-      
-      <h3 className="skill-name text-center font-semibold mb-3">{skill.name}</h3>
-      
-      <div className="skill-progress-container">
-        <div className="skill-level flex justify-between text-xs mb-1">
-          <span>Proficiency</span>
-          <span className="percentage-display">{skill.level}%</span>
-        </div>
-        <div className={`skill-progress-bg h-2 w-full rounded-full ${
-          isDarkMode ? 'bg-blue-800/50' : 'bg-gray-200'
-        }`}>
-          <div 
-            className="skill-progress-bar h-full rounded-full bg-gradient-to-r from-orange-500 to-orange-400"
-            style={{
-              width: isVisible ? `${skill.level}%` : '0%',
-              transitionProperty: 'width',
-              transitionDuration: '1s',
-              transitionTimingFunction: 'ease-out',
-              transitionDelay: `${index * 0.05}s`,
-              willChange: 'width'
-            }}
-          ></div>
-        </div>
-      </div>
+const CATEGORY_RING = {
+  frontend: 'linear-gradient(135deg, #4f46e5, #818cf8)',
+  tools: 'linear-gradient(135deg, #0891b2, #67e8f9)',
+  design: 'linear-gradient(135deg, #0d9488, #5eead4)',
+  video: 'linear-gradient(135deg, #059669, #6ee7b7)',
+  ai: 'linear-gradient(135deg, #a855f7, #ec4899, #f472b6)',
+};
+
+const SkillChip = memo(({ skill, ringGradient, index }) => (
+  <li
+    className="skills-wow__chip"
+    style={{ '--chip-delay': `${index * 0.04}s` }}
+  >
+    <div className="skills-wow__circle" style={{ background: ringGradient }}>
+      <span className="skills-wow__circle-inner">
+        <img src={skill.icon} alt="" width={32} height={32} loading="lazy" />
+      </span>
     </div>
-  );
-});
+    <span className="skills-wow__chip-name">{skill.name}</span>
+  </li>
+));
 
-SkillCard.displayName = 'SkillCard';
+SkillChip.displayName = 'SkillChip';
 
-export const Skills = () => {
+const skillCategories = [
+  {
+    id: 'frontend',
+    title: 'Web',
+    fullTitle: 'Web Development',
+    icon: HiOutlineCodeBracket,
+    skills: [
+      { name: 'React.js', icon: '/images/react-svgrepo-com.svg' },
+      { name: 'JavaScript', icon: '/images/javascript-svgrepo-com.svg' },
+      { name: 'Spring Boot', icon: '/images/spring-boot-svgrepo-com.svg' },
+      { name: 'HTML/CSS', icon: '/images/html-5-svgrepo-com.svg' },
+      { name: 'Tailwind', icon: '/images/tailwind-svgrepo-com.svg' },
+      { name: 'Java', icon: '/images/java-svgrepo-com.svg' },
+      { name: 'OracleDB', icon: '/images/database-svgrepo-com.svg' },
+      { name: 'Vite', icon: '/images/vite-svgrepo-com.svg' },
+    ],
+  },
+  {
+    id: 'tools',
+    title: 'Tools',
+    fullTitle: 'Dev Tools',
+    icon: HiOutlineComputerDesktop,
+    skills: [
+      { name: 'Git/GitHub', icon: '/images/github-142-svgrepo-com (1).svg' },
+      { name: 'Responsive', icon: '/images/responsive-design-svgrepo-com.svg' },
+      { name: 'Postman', icon: '/images/postman-icon-svgrepo-com.svg' },
+      { name: 'Swagger', icon: '/images/swagger-svgrepo-com.svg' },
+    ],
+  },
+  {
+    id: 'design',
+    title: 'Design',
+    fullTitle: 'Design',
+    icon: HiOutlinePaintBrush,
+    skills: [
+      { name: 'Photoshop', icon: '/images/photoshop-cc-logo-svgrepo-com.svg' },
+      { name: 'Illustrator', icon: '/images/adobe-illustrator-svgrepo-com.svg' },
+    ],
+  },
+  {
+    id: 'video',
+    title: 'Video',
+    fullTitle: 'Video Editing',
+    icon: HiOutlineFilm,
+    skills: [
+      { name: 'Premiere', icon: '/images/adobe-premiere-svgrepo-com.svg' },
+      { name: 'After Effects', icon: '/images/after-effects-cc-logo-svgrepo-com.svg' },
+    ],
+  },
+  {
+    id: 'ai',
+    title: 'AI',
+    fullTitle: 'AI Tools',
+    icon: HiOutlineCpuChip,
+    skills: [
+      { name: 'Cursor', icon: '/images/cursor.png' },
+      { name: 'Claude Code', icon: '/images/claude.png' },
+      { name: 'Antigravity', icon: '/images/Antigravity.png' },
+      { name: 'ChatGPT', icon: '/images/chatgpt.jpg' },
+    ],
+  },
+];
+
+export const Skills = memo(() => {
   const { isDarkMode } = useContext(ThemeContext);
   const [activeCategory, setActiveCategory] = useState('frontend');
-  const [isVisible, setIsVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [panelKey, setPanelKey] = useState(0);
   const sectionRef = useRef(null);
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-  
-  // Define skillCategories before using it in any hooks
-  const skillCategories = [
-    {
-      id: 'frontend',
-      title: 'Web Development',
-      icon: <FaCode />,
-      skills: [
-        { name: 'HTML', level: 90, icon: '/images/html-5-svgrepo-com.svg' },
-        { name: 'CSS', level: 85, icon: '/images/css-3-svgrepo-com.svg' },
-        { name: 'Javascript', level: 80, icon: '/images/javascript-svgrepo-com.svg' },
-        { name: 'React.Js', level: 85, icon: '/images/react-svgrepo-com.svg' },
-        { name: 'Vite.Js', level: 75, icon: '/images/vite-svgrepo-com.svg' },
-        { name: 'Tailwind CSS', level: 80, icon: '/images/tailwind-svgrepo-com.svg' },
-        { name: 'Java', level: 85, icon: '/images/java-svgrepo-com.svg' },
-        { name: 'Spring Boot', level: 80, icon: '/images/spring-boot-svgrepo-com.svg' },
-        { name: 'Oracle DB', level: 60, icon: '/images/database-svgrepo-com.svg' },
-        
-      ]
-    },
-    {
-      id: 'tools',
-      title: 'Development Tools',
-      icon: <FaDesktop />,
-      skills: [
-        { name: 'Git & GitHub', level: 80, icon: '/images/github-142-svgrepo-com (1).svg' },
-        { name: 'Responsive Design', level: 85, icon: '/images/responsive-design-svgrepo-com.svg' },
-        { name : 'postman', level: 80, icon: '/images/postman-icon-svgrepo-com.svg' },
-        { name: 'swagger', level: 75, icon: '/images/swagger-svgrepo-com.svg' }
-        
-         
-      ]
-    },
-    {
-      id: 'design',
-      title: 'Design',
-      icon: <FaPalette />,
-      skills: [
-        { name: 'Photoshop', level: 90, icon: '/images/photoshop-cc-logo-svgrepo-com.svg' },
-        { name: 'Illustrator', level: 85, icon: '/images/adobe-illustrator-svgrepo-com.svg' }
-      ]
-    },
-    {
-      id: 'video',
-      title: 'Video Editing',
-      icon: <FaLayerGroup />,
-      skills: [
-        { name: 'Premiere Pro', level: 85, icon: '/images/adobe-premiere-svgrepo-com.svg' },
-        { name: 'After Effects', level: 80, icon: '/images/after-effects-cc-logo-svgrepo-com.svg' }
-      ]
-    }
-  ];
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setIsVisible(true);
-        // Small delay to ensure component is fully visible before animating
-        setTimeout(() => setShouldAnimate(true), 100);
-      } else {
-        setIsVisible(false);
-        setShouldAnimate(false);
-      }
-    }, { threshold: 0.2 });
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+
+  const handleCategoryChange = useCallback((id) => {
+    setActiveCategory(id);
+    setPanelKey((k) => k + 1);
   }, []);
 
-  // Optimize category change to reset animations properly
-  const handleCategoryChange = (categoryId) => {
-    if (categoryId === activeCategory) return;
-    setShouldAnimate(false);
-    setActiveCategory(categoryId);
-    setTimeout(() => setShouldAnimate(true), 50);
-  };
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
 
-  // Get current category skills
-  const currentSkills = skillCategories.find(cat => cat.id === activeCategory)?.skills || [];
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const current = skillCategories.find((c) => c.id === activeCategory);
+  const ring = CATEGORY_RING[activeCategory];
+  const PanelIcon = current?.icon;
 
   return (
-    <section 
-      ref={sectionRef} 
-      className={`skills-container py-10 transition-colors duration-300 ${isDarkMode ? 'bg-blue-950 text-white' : 'bg-blue-50 text-gray-800'}`}
+    <section
+      ref={sectionRef}
+      id="skills"
+      className={`skills-wow ${isDarkMode ? 'skills-wow--dark' : 'skills-wow--light'} ${visible ? 'skills-wow--visible' : ''}`}
+      aria-labelledby="skills-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <div className="section-header text-center mb-6">
-          <div className="about-fx w-16 sm:w-20 h-[12px] sm:h-[15px] bg-orange-500 mb-2 rounded-full mx-auto"></div>
-          <h2 className='font-bold text-2xl sm:text-3xl mb-2'>My Skills</h2>
-          <p className={`text-xs sm:text-sm max-w-lg mx-auto ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Expertise in front-end development and creative design tools
+      <div className="skills-wow__bg" aria-hidden="true">
+        <div className="skills-wow__shade" />
+        <div className="skills-wow__mesh" />
+        <div className="skills-wow__glow skills-wow__glow--1" />
+        <div className="skills-wow__glow skills-wow__glow--2" />
+      </div>
+
+      <div className="skills-wow__inner">
+        <header className="skills-wow__header">
+          <div className="skills-wow__badge">
+            <HiOutlineBolt aria-hidden="true" />
+            <span>Technical expertise</span>
+            <span className="skills-wow__pulse" aria-hidden="true" />
+          </div>
+          <h2 id="skills-heading" className="skills-wow__title">
+            Professional <span className="skills-wow__title-accent">Skills</span>
+          </h2>
+          <p className="skills-wow__subtitle">
+            Technologies and tools I work with every day.
           </p>
-        </div>
-        
-        {/* Category Nav */}
-        <div className="category-nav flex flex-wrap justify-center mb-5 gap-2 sm:gap-4">
-          {skillCategories.map(category => (
-            <button
-              key={category.id}
-              onClick={() => handleCategoryChange(category.id)}
-              className={`category-btn flex items-center px-4 py-2 rounded-full text-xs sm:text-sm transition-colors duration-300 border ${
-                activeCategory === category.id
-                  ? isDarkMode 
-                    ? 'bg-orange-500 text-white border-orange-600' 
-                    : 'bg-orange-500 text-white border-orange-600'
-                  : isDarkMode
-                    ? 'bg-blue-900/40 text-gray-300 border-blue-800/50 hover:bg-blue-800/50'
-                    : 'bg-white/90 text-gray-700 border-gray-200/80 hover:bg-gray-100'
-              }`}
-            >
-              <span className="mr-2">{category.icon}</span>
-              {category.title}
-            </button>
-          ))}
-        </div>
-        
-        {/* Skills Container */}
-        <div className="skills-display pb-2">
-          <div className="skills-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {currentSkills.map((skill, index) => (
-              <SkillCard 
-                key={`${activeCategory}-${skill.name}`}
-                skill={skill}
-                index={index}
-                isDarkMode={isDarkMode}
-                isVisible={shouldAnimate}
-              />
+        </header>
+
+        <div className="skills-wow__tabs-wrap">
+          <div className="skills-wow__tabs" role="tablist" aria-label="Skill categories">
+            {skillCategories.map(({ id, title, fullTitle, icon: Icon }) => (
+              <button
+                key={id}
+                type="button"
+                role="tab"
+                aria-selected={activeCategory === id}
+                className={`skills-wow__tab ${activeCategory === id ? 'skills-wow__tab--active' : ''}`}
+                onClick={() => handleCategoryChange(id)}
+              >
+                <Icon aria-hidden="true" />
+                <span className="skills-wow__tab-label">{title}</span>
+                <span className="skills-wow__tab-label-full">{fullTitle}</span>
+              </button>
             ))}
           </div>
         </div>
+
+        <div
+          key={panelKey}
+          className={`skills-wow__card ${isDarkMode ? 'skills-wow__card--dark' : 'skills-wow__card--light'}`}
+          role="tabpanel"
+          aria-label={current?.fullTitle}
+        >
+          <div className="skills-wow__card-shine" aria-hidden="true" />
+
+          <div className="skills-wow__card-head">
+            <div className="skills-wow__card-title">
+              {PanelIcon && <PanelIcon aria-hidden="true" />}
+              <h3>{current?.fullTitle}</h3>
+            </div>
+            <span className="skills-wow__stat-pill">
+              <HiOutlineSparkles aria-hidden="true" />
+              {current?.skills.length} tools
+            </span>
+          </div>
+
+          <ul className="skills-wow__grid" aria-label={`${current?.fullTitle} skills`}>
+            {current?.skills.map((skill, index) => (
+              <SkillChip key={skill.name} skill={skill} ringGradient={ring} index={index} />
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
-  )
-}
+  );
+});
+
+Skills.displayName = 'Skills';
