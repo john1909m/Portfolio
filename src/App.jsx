@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense, memo } from 'react';
+import { useState, useEffect, lazy, Suspense, memo, useCallback, useRef } from 'react';
 import './App.css';
 import { FaHome, FaUser, FaBriefcase, FaGraduationCap, FaEnvelope } from 'react-icons/fa';
 import { GiSkills } from 'react-icons/gi';
@@ -37,70 +37,107 @@ function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [showContent, setShowContent] = useState(false);
-
-  const tabs = [
-    { id: 'home', icon: <FaHome size="20" />, label: 'Home', link: '#home' },
-    { id: 'about', icon: <FaUser size="20" />, label: 'About', link: '#about' },
-    { id: 'skills', icon: <GiSkills size="20" />, label: 'Skills', link: '#skills' },
-    { id: 'portfolio', icon: <FaBriefcase size="20" />, label: 'Portfolio', link: '#portfolio' },
-    { id: 'education', icon: <FaGraduationCap size="20" />, label: 'Education', link: '#education' },
-    { id: 'contact', icon: <FaEnvelope size="20" />, label: 'Contact', link: '#contact' },
-  ];
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const skillsRef = useRef(null);
+  const portfolioRef = useRef(null);
+  const educationRef = useRef(null);
+  const contactRef = useRef(null);
+  
+  const sectionsRef = {
+    home: homeRef,
+    about: aboutRef,
+    skills: skillsRef,
+    portfolio: portfolioRef,
+    education: educationRef,
+    contact: contactRef,
   };
 
-  useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
+  const tabs = [
+    { id: 'home', icon: <FaHome size="20" />, label: 'Home', ref: homeRef },
+    { id: 'about', icon: <FaUser size="20" />, label: 'About', ref: aboutRef },
+    { id: 'skills', icon: <GiSkills size="20" />, label: 'Skills', ref: skillsRef },
+    { id: 'portfolio', icon: <FaBriefcase size="20" />, label: 'Portfolio', ref: portfolioRef },
+    { id: 'education', icon: <FaGraduationCap size="20" />, label: 'Education', ref: educationRef },
+    { id: 'contact', icon: <FaEnvelope size="20" />, label: 'Contact', ref: contactRef },
+  ];
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+  const scrollToSection = useCallback((id) => {
+    const section = sectionsRef[id]?.current;
+    if (section) {
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 80;
+      const elementPosition = section.offsetTop - headerHeight - 20;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+      
+      setActiveTab(id);
+    }
+  }, [sectionsRef]);
 
-    window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
+  // Handle scroll detection
   useEffect(() => {
     if (!showContent) return;
-
-    let isScrolling = false;
-
+    
     const handleScroll = () => {
-      if (isScrolling) return;
-      isScrolling = true;
-
-      requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        const viewportHeight = window.innerHeight;
-
-        if (isMobile) {
-          if (scrollY < viewportHeight) setActiveTab('home');
-          else if (scrollY < 1.8 * viewportHeight) setActiveTab('about');
-          else if (scrollY < 3 * viewportHeight) setActiveTab('skills');
-          else if (scrollY < 7.1 * viewportHeight) setActiveTab('portfolio');
-          else if (scrollY < 8 * viewportHeight) setActiveTab('education');
-          else setActiveTab('contact');
-        } else {
-          if (scrollY < viewportHeight) setActiveTab('home');
-          else if (scrollY < 1.6 * viewportHeight) setActiveTab('about');
-          else if (scrollY < 2.2 * viewportHeight) setActiveTab('skills');
-          else if (scrollY < 3.2 * viewportHeight) setActiveTab('portfolio');
-          else if (scrollY < 4.2 * viewportHeight) setActiveTab('education');
-          else setActiveTab('contact');
+      const scrollY = window.scrollY;
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 80;
+      
+      // Get all sections positions
+      const sections = tabs.map(tab => ({
+        id: tab.id,
+        element: sectionsRef[tab.id]?.current,
+        offset: sectionsRef[tab.id]?.current?.offsetTop - headerHeight
+      })).filter(s => s.element);
+      
+      // Find active section
+      let activeSection = 'home';
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (scrollY >= section.offset - 100) {
+          activeSection = section.id;
+          break;
         }
-
-        isScrolling = false;
-      });
+      }
+      
+      // If at very top
+      if (scrollY < 100) {
+        activeSection = 'home';
+      }
+      
+      if (activeSection !== activeTab) {
+        setActiveTab(activeSection);
+      }
     };
-
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile, showContent]);
+    window.addEventListener('resize', () => setTimeout(handleScroll, 100));
+    
+    // Initial call
+    setTimeout(handleScroll, 100);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [showContent, activeTab, sectionsRef, tabs]);
+
+  // Detect mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <ErrorBoundary>
@@ -116,42 +153,44 @@ function App() {
         {showContent && (
           <>
             <BackgroundParticles />
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
 
             <main>
-              <Suspense fallback={<LoadingFallback />}>
-                <Header />
-              </Suspense>
+              <div ref={homeRef} id="home">
+                <Suspense fallback={<LoadingFallback />}>
+                  <Header />
+                </Suspense>
+              </div>
 
-              <div id="about">
+              <div ref={aboutRef} id="about">
                 <Suspense fallback={<LoadingFallback />}>
                   <About />
                 </Suspense>
               </div>
               <div className="h-[5vh]" />
 
-              <div id="skills">
+              <div ref={skillsRef} id="skills">
                 <Suspense fallback={<LoadingFallback />}>
                   <Skills />
                 </Suspense>
               </div>
               <div className="h-[5vh]" />
 
-              <div id="portfolio">
+              <div ref={portfolioRef} id="portfolio">
                 <Suspense fallback={<LoadingFallback />}>
                   <Portfolio />
                 </Suspense>
               </div>
               <div className="h-[5vh]" />
 
-              <div id="education">
+              <div ref={educationRef} id="education">
                 <Suspense fallback={<LoadingFallback />}>
                   <Education />
                 </Suspense>
               </div>
               <div className="h-[7vh]" />
 
-              <div id="contact">
+              <div ref={contactRef} id="contact">
                 <Suspense fallback={<LoadingFallback />}>
                   <Contact />
                 </Suspense>
@@ -164,16 +203,13 @@ function App() {
             </main>
 
             <div className="navbar-wrapper">
-              <nav className="mobile-navbar" aria-label="Section navigation">
+              <nav className="mobile-navbar">
                 {tabs.map((tab) => (
                   <NavButton
                     key={tab.id}
                     tab={tab}
                     activeTab={activeTab}
-                    onClick={() => {
-                      setActiveTab(tab.id);
-                      scrollToSection(tab.id);
-                    }}
+                    onClick={() => scrollToSection(tab.id)}
                   />
                 ))}
               </nav>
