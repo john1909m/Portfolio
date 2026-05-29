@@ -62,7 +62,7 @@ const Header = () => {
               <div className="hero-wow__frame">
                 <img
                   className="hero-wow__photo"
-                  src="/images/IMG_36834.webp"
+                  src="/images/IMG_7859ddrr.webp"
                   alt="John Emil — Software Engineer"
                   width={280}
                   height={280}
