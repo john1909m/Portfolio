@@ -64,7 +64,7 @@ function App() {
     { id: 'skills', icon: <GiSkills size="20" />, label: 'Skills', ref: skillsRef },
     { id: 'portfolio', icon: <FaBriefcase size="20" />, label: 'Portfolio', ref: portfolioRef },
     { id: 'experience', icon: <FaBriefcase size="20" />, label: 'Experience', ref: experienceRef },
-    { id: 'education', icon: <FaGraduationCap size="20" />, label: 'Education', ref: educationRef },
+    
     { id: 'contact', icon: <FaEnvelope size="20" />, label: 'Contact', ref: contactRef },
   ];
 

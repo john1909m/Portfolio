@@ -1,62 +1,153 @@
+/* WelcomeScreen.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .welcome-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--background-color);
+  background: linear-gradient(135deg, #0a0f1a 0%, #0c1122 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 99999;
-  animation: fadeOut 0.3s ease-out forwards;
-  animation-delay: 1.5s;
-  pointer-events: none;
+  font-family: 'Inter', 'Fira Code', system-ui, -apple-system, sans-serif;
+  animation: fadeOut 0.4s ease forwards;
+  animation-delay: 2.2s;
 }
 
-.welcome-screen::before {
-  content: '';
+.particles-canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--background-color);
-  z-index: -1;
-}
-
-.welcome-content {
-  text-align: center;
+  pointer-events: none;
   z-index: 1;
+  opacity: 0.5;
 }
 
-.welcome-text {
-  font-size: 4rem;
-  color: var(--text-color);
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 500px;
+  padding: 2rem;
+}
+
+/* Code line style */
+.code-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(59, 130, 246, 0.08);
+  padding: 6px 14px;
+  border-radius: 40px;
+  margin-bottom: 2rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.chevron {
+  color: #3b82f6;
   font-weight: bold;
 }
 
-.cursor {
-  display: inline-block;
-  width: 3px;
-  height: 1em;
-  background-color: var(--text-color);
-  margin-left: 2px;
-  animation: blink 0.6s infinite;
+.code-text {
+  color: #94a3b8;
 }
 
+.cursor-code {
+  color: #3b82f6;
+  animation: blink 1s infinite;
+}
+
+/* Welcome text */
+.welcome-text {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffffff, #94a3b8, #60a5fa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Cursor */
+.cursor {
+  display: inline-block;
+  width: 2.5px;
+  height: 1.2em;
+  background: #60a5fa;
+  margin-left: 3px;
+  border-radius: 1px;
+  animation: blink 0.9s infinite;
+  vertical-align: middle;
+  box-shadow: 0 0 4px #60a5fa;
+}
+
+/* Divider */
+.divider {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3b82f6, #8b5cf6, #3b82f6, transparent);
+  margin: 1.5rem auto;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: #64748b;
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.5px;
+}
+
+.bracket {
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* Animations */
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  50% { opacity: 0.2; }
 }
 
 @keyframes fadeOut {
-  from { 
+  0% {
     opacity: 1;
     visibility: visible;
   }
-  to { 
+  100% {
     opacity: 0;
     visibility: hidden;
   }
-} 
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .content {
+    padding: 1rem;
+  }
+  
+  .code-line {
+    font-size: 0.65rem;
+    padding: 4px 12px;
+  }
+  
+  .badge {
+    font-size: 0.6rem;
+  }
+}
