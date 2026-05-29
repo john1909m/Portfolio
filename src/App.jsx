@@ -7,10 +7,12 @@ import BackgroundParticles from './assets/components/BackgroundParticles';
 import WelcomeScreen from './assets/components/WelcomeScreen';
 import { Contact } from './assets/components/Contact';
 import { ErrorBoundary } from './components/shared/ErrorBoundary';
+import { Experience } from './assets/components/Experience';
 
 const Header = lazy(() => import('./assets/components/header'));
 const About = lazy(() => import('./assets/components/About'));
 const Portfolio = lazy(() => import('./assets/components/Potfolio').then((m) => ({ default: m.Portfolio })));
+const experience = lazy(() => import('./assets/components/Experience').then((m) => ({ default: m.Experience })));
 const Education = lazy(() => import('./assets/components/Education').then((m) => ({ default: m.Education })));
 const Skills = lazy(() => import('./assets/components/Skills').then((m) => ({ default: m.Skills })));
 const Footer = lazy(() => import('./assets/components/Footer'));
@@ -42,6 +44,7 @@ function App() {
   const aboutRef = useRef(null);
   const skillsRef = useRef(null);
   const portfolioRef = useRef(null);
+  const experienceRef = useRef(null);
   const educationRef = useRef(null);
   const contactRef = useRef(null);
   
@@ -50,6 +53,7 @@ function App() {
     about: aboutRef,
     skills: skillsRef,
     portfolio: portfolioRef,
+    experience: experienceRef,
     education: educationRef,
     contact: contactRef,
   };
@@ -59,6 +63,7 @@ function App() {
     { id: 'about', icon: <FaUser size="20" />, label: 'About', ref: aboutRef },
     { id: 'skills', icon: <GiSkills size="20" />, label: 'Skills', ref: skillsRef },
     { id: 'portfolio', icon: <FaBriefcase size="20" />, label: 'Portfolio', ref: portfolioRef },
+    { id: 'experience', icon: <FaBriefcase size="20" />, label: 'Experience', ref: experienceRef },
     { id: 'education', icon: <FaGraduationCap size="20" />, label: 'Education', ref: educationRef },
     { id: 'contact', icon: <FaEnvelope size="20" />, label: 'Contact', ref: contactRef },
   ];
@@ -182,6 +187,12 @@ function App() {
                 </Suspense>
               </div>
               <div className="h-[5vh]" />
+
+              <div ref={experienceRef} id="experience">
+                <Suspense fallback={<LoadingFallback />}>
+                  <Experience />
+                </Suspense>
+              </div>
 
               <div ref={educationRef} id="education">
                 <Suspense fallback={<LoadingFallback />}>
