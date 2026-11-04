@@ -32,6 +32,8 @@ const skillCategories = [
       { name: 'Postman', level: 'API Testing' },
       { name: 'Swagger / OpenAPI', level: 'Docs' },
       { name: 'Responsive Design', level: 'Mobile' },
+      { name: 'Docker', level: 'Containers' },
+
     ],
   },
   {
@@ -68,7 +70,7 @@ export const Skills = memo(() => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="pb-6 sm:pb-8 border-b border-ink-border space-y-1.5 sm:space-y-2">
           <p className="text-xs font-mono text-ink-muted tracking-wider">
-            04 &middot; Technical competencies
+            02 &middot; Technical competencies
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-semibold">
             Skills &amp; toolset
@@ -92,11 +94,10 @@ export const Skills = memo(() => {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActiveTab(cat.id)}
-                  className={`inline-flex items-center gap-2 px-3.5 py-2 rounded text-xs font-mono transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
-                    isActive
+                  className={`inline-flex items-center gap-2 px-3.5 py-2 rounded text-xs font-mono transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${isActive
                       ? 'bg-ink text-paper border-ink'
                       : 'bg-paper-card text-ink border-ink-border hover:bg-paper-surface'
-                  }`}
+                    }`}
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
                   <span>{cat.title}</span>

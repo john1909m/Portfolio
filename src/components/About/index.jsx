@@ -7,7 +7,7 @@ export const About = memo(() => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="pb-6 sm:pb-8 border-b border-ink-border space-y-1.5 sm:space-y-2">
           <p className="text-xs font-mono text-ink-muted tracking-wider">
-            05 &middot; Profile &amp; background
+            01 &middot; Profile &amp; background
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-semibold">
             About John Emil

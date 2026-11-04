@@ -6,6 +6,7 @@ import {
   HiOutlineUser,
   HiOutlineBriefcase,
   HiOutlineEnvelope,
+  HiOutlineCpuChip,
 } from 'react-icons/hi2';
 import ThemeToggle from './components/ThemeToggle';
 import { ErrorBoundary } from './components/shared/ErrorBoundary';
@@ -68,9 +69,9 @@ function App() {
 
   const sectionContainerRef = useRef(null);
 
-  // Active section scroll spy
+  // Active section scroll spy (ordered matching the page structure)
   useEffect(() => {
-    const sectionIds = ['home', 'work-section', 'about', 'experience', 'education', 'certifications', 'skills', 'contact'];
+    const sectionIds = ['home', 'about', 'skills', 'work-section', 'experience', 'education', 'certifications', 'contact'];
 
     const handleScroll = () => {
       const scrollPos = window.scrollY + 180;
@@ -151,9 +152,10 @@ function App() {
 
   const navTabs = useMemo(() => [
     { id: 'home', icon: HiOutlineHome, label: 'Home' },
+    { id: 'about', icon: HiOutlineUser, label: 'About' },
+    { id: 'skills', icon: HiOutlineCpuChip, label: 'Skills' },
     { id: 'work', icon: activeSection === 'software' ? HiOutlineCodeBracket : HiOutlinePaintBrush, label: activeSection === 'software' ? 'Software' : 'Graphic' },
-    { id: 'about', icon: HiOutlineUser, label: 'Bio' },
-    { id: 'experience', icon: HiOutlineBriefcase, label: 'Experience' },
+    { id: 'experience', icon: HiOutlineBriefcase, label: 'Exp & Edu' },
     { id: 'contact', icon: HiOutlineEnvelope, label: 'Contact' },
   ], [activeSection]);
 
@@ -204,17 +206,6 @@ function App() {
               </button>
               <button
                 type="button"
-                onClick={() => scrollToAnchor('work-section')}
-                className={`px-3 py-1.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
-                  activeScrollSection === 'work'
-                    ? 'bg-ink text-paper font-medium'
-                    : 'text-ink-muted hover:text-ink hover:bg-paper-surface'
-                }`}
-              >
-                Work ({activeSection === 'software' ? 'Software' : 'Graphic'})
-              </button>
-              <button
-                type="button"
                 onClick={() => scrollToAnchor('about')}
                 className={`px-3 py-1.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
                   activeScrollSection === 'about'
@@ -222,40 +213,40 @@ function App() {
                     : 'text-ink-muted hover:text-ink hover:bg-paper-surface'
                 }`}
               >
-                Bio
+                About
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToAnchor('skills')}
+                className={`px-3 py-1.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
+                  activeScrollSection === 'skills'
+                    ? 'bg-ink text-paper font-medium'
+                    : 'text-ink-muted hover:text-ink hover:bg-paper-surface'
+                }`}
+              >
+                Skills
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToAnchor('work-section')}
+                className={`px-3 py-1.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
+                  activeScrollSection === 'work'
+                    ? 'bg-ink text-paper font-medium'
+                    : 'text-ink-muted hover:text-ink hover:bg-paper-surface'
+                }`}
+              >
+                Portfolio ({activeSection === 'software' ? 'Software' : 'Graphic'})
               </button>
               <button
                 type="button"
                 onClick={() => scrollToAnchor('experience')}
                 className={`px-3 py-1.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
-                  activeScrollSection === 'experience'
+                  activeScrollSection === 'experience' || activeScrollSection === 'education' || activeScrollSection === 'certifications'
                     ? 'bg-ink text-paper font-medium'
                     : 'text-ink-muted hover:text-ink hover:bg-paper-surface'
                 }`}
               >
-                Experience
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollToAnchor('education')}
-                className={`px-3 py-1.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
-                  activeScrollSection === 'education'
-                    ? 'bg-ink text-paper font-medium'
-                    : 'text-ink-muted hover:text-ink hover:bg-paper-surface'
-                }`}
-              >
-                Education
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollToAnchor('certifications')}
-                className={`px-3 py-1.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
-                  activeScrollSection === 'certifications'
-                    ? 'bg-ink text-paper font-medium'
-                    : 'text-ink-muted hover:text-ink hover:bg-paper-surface'
-                }`}
-              >
-                Certifications
+                Experience &amp; Education
               </button>
               <button
                 type="button"
@@ -278,7 +269,7 @@ function App() {
 
         {/* Main single page content */}
         <main className="pb-24 md:pb-0">
-          {/* Top Header: Two-column grid, Name, Role, Summary, Blended Portrait (no switch) */}
+          {/* 1. Header: Two-column grid, Name, Role, Summary, Blended Portrait (no switch) */}
           <Suspense fallback={<LoadingFallback />}>
             <Header onLoaded={() => setHeaderLoaded(true)} />
           </Suspense>
@@ -288,7 +279,17 @@ function App() {
             <TechMarquee isHeaderLoaded={headerLoaded} />
           </Suspense>
 
-          {/* Work / Portfolio Section */}
+          {/* 2. About Me */}
+          <Suspense fallback={<LoadingFallback />}>
+            <About />
+          </Suspense>
+
+          {/* 3. Skills */}
+          <Suspense fallback={<LoadingFallback />}>
+            <Skills />
+          </Suspense>
+
+          {/* 4. Portfolio (Work Section) */}
           <div id="work-section" className="border-b border-ink-border bg-paper">
             {/* Segmented Switch as the first element inside the Portfolio section, above the filters */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-2">
@@ -329,12 +330,7 @@ function App() {
             </div>
           </div>
 
-          {/* Shared Bottom Area: Compact Bio + 3 Separate Timeline Blocks */}
-          <Suspense fallback={<LoadingFallback />}>
-            <About />
-          </Suspense>
-
-          {/* Three separate blocks as specified */}
+          {/* 5. Experience and Education */}
           <Suspense fallback={<LoadingFallback />}>
             <Experience />
           </Suspense>
@@ -347,14 +343,12 @@ function App() {
             <Certifications />
           </Suspense>
 
-          <Suspense fallback={<LoadingFallback />}>
-            <Skills />
-          </Suspense>
-
+          {/* 6. Contact */}
           <Suspense fallback={<LoadingFallback />}>
             <Contact />
           </Suspense>
 
+          {/* 7. Footer */}
           <Suspense fallback={<div />}>
             <Footer />
           </Suspense>
@@ -362,10 +356,10 @@ function App() {
 
         {/* Mobile floating quick jump nav: Icons on top, text labels below */}
         <aside
-          className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 md:hidden w-[94vw] max-w-[360px] p-1.5 rounded-2xl border border-ink-border bg-paper/95 backdrop-blur-md shadow-xl shadow-black/10 dark:shadow-black/50"
+          className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 md:hidden w-[94vw] max-w-[380px] p-1.5 rounded-2xl border border-ink-border bg-paper/95 backdrop-blur-md shadow-xl shadow-black/10 dark:shadow-black/50"
           aria-label="Mobile quick navigation"
         >
-          <div className="grid grid-cols-5 gap-0.5 w-full items-center justify-items-stretch">
+          <div className="grid grid-cols-6 gap-0.5 w-full items-center justify-items-stretch">
             {navTabs.map((tab) => (
               <NavButton
                 key={tab.id}
