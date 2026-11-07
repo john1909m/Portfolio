@@ -1,6 +1,8 @@
 import { memo, useState, useMemo } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { SOFTWARE_PROJECTS } from './portfolioData';
+import ProjectImage from './shared/ProjectImage';
+import { ACCENT_CONFIG } from './shared/projectConstants';
 
 const SUB_FILTERS = [
   { id: 'all', label: 'All' },
@@ -11,7 +13,7 @@ const SUB_FILTERS = [
 
 const INITIAL_CARD_COUNT = 6;
 
-export const SoftwareSection = memo(() => {
+export const SoftwareSection = memo(({ onSelectProject }) => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(INITIAL_CARD_COUNT);
 
@@ -32,7 +34,6 @@ export const SoftwareSection = memo(() => {
   const hasMore = filteredProjects.length > visibleCount;
 
   const handleLoadMore = () => {
-    // Load the rest of the cards
     setVisibleCount(filteredProjects.length);
   };
 
@@ -73,16 +74,14 @@ export const SoftwareSection = memo(() => {
                 type="button"
                 onClick={() => handleFilterChange(f.id)}
                 aria-pressed={isSelected}
-                className={`inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded text-xs font-mono transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${
-                  isSelected
-                    ? 'bg-lime text-black border-lime font-medium'
-                    : 'bg-paper-card text-ink border-ink-border hover:bg-paper-surface'
-                }`}
+                className={`inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded text-xs font-mono transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${isSelected
+                  ? 'bg-lime text-black border-lime font-medium'
+                  : 'bg-paper-card text-ink border-ink-border hover:bg-paper-surface'
+                  }`}
               >
                 <span>{f.label}</span>
-                <span className={`text-[10px] tabular-nums px-1.5 py-0.5 rounded ${
-                  isSelected ? 'bg-black/20 text-black' : 'bg-paper-surface text-ink-muted'
-                }`}>
+                <span className={`text-[10px] tabular-nums px-1.5 py-0.5 rounded ${isSelected ? 'bg-black/20 text-black' : 'bg-paper-surface text-ink-muted'
+                  }`}>
                   {count}
                 </span>
               </button>
@@ -93,87 +92,117 @@ export const SoftwareSection = memo(() => {
 
       {/* Projects Grid: 1 column on mobile, 2 on tablet, 3 on desktop */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {visibleProjects.map((project) => (
-          <article
-            key={project.id}
-            className="border border-ink-border rounded bg-paper-card overflow-hidden flex flex-col justify-between transition-shadow hover:shadow-md"
-            style={{ minWidth: 0 }}
-          >
-            <div>
-              {/* Header */}
-              <div className="px-3.5 sm:px-4 py-2 sm:py-2.5 border-b border-ink-border flex items-center justify-between text-xs font-mono">
-                <span className="font-medium text-ink px-2 py-0.5 rounded bg-lime/25 text-[11px]">
-                  {project.number} &middot; {project.role.toUpperCase()}
-                </span>
-                <span className="text-ink-muted text-[11px] truncate max-w-[150px] sm:max-w-[180px]">
-                  {project.subtitle}
-                </span>
-              </div>
+        {visibleProjects.map((project, index) => {
+          const accent = ACCENT_CONFIG[project.accent || 'lime'] || ACCENT_CONFIG.lime;
+          const displayNumber = project.number || String(index + 1).padStart(2, '0');
 
-              {/* Preview Image */}
-              <div className="aspect-[16/10] bg-paper-surface overflow-hidden border-b border-ink-border">
-                <img
-                  src={project.image}
+          return (
+            <article
+              key={project.id}
+              tabIndex={0}
+              role="button"
+              aria-label={`View details for ${project.title}`}
+              onClick={(e) => onSelectProject?.(project, e.currentTarget)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectProject?.(project, e.currentTarget);
+                }
+              }}
+              className={`group text-left cursor-pointer border border-ink-border rounded bg-paper-card overflow-hidden flex flex-col justify-between transition-all hover:shadow-lg hover:border-ink focus-visible:outline-none focus-visible:ring-2 ${accent.ring}`}
+              style={{ minWidth: 0 }}
+            >
+              <div>
+                {/* Top Accent Color Block */}
+                <div className={`h-1.5 w-full ${accent.bg}`} aria-hidden="true" />
+
+                {/* Header */}
+                <div className="px-3.5 sm:px-4 py-2 sm:py-2.5 border-b border-ink-border flex items-center justify-between text-xs font-mono">
+                  <span className={`font-medium text-ink px-2 py-0.5 rounded text-[11px] ${accent.tagBg}`}>
+                    {displayNumber} &middot; {project.role?.toUpperCase()}
+                  </span>
+                  <span className="text-ink-muted text-[11px] font-mono flex items-center gap-1 group-hover:text-ink transition-colors">
+                    <span>CASE STUDY</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </span>
+                </div>
+
+                {/* Preview Image with Fallback */}
+                <ProjectImage
+                  src={project.cover || project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  width={480}
-                  height={300}
+                  aspectRatio="aspect-[16/10]"
                 />
-              </div>
 
-              {/* Description */}
-              <div className="p-3.5 sm:p-5 space-y-3 sm:space-y-3.5">
-                <h3 className="text-lg sm:text-xl font-display text-ink font-semibold tracking-tight">
-                  {project.title}
-                </h3>
+                {/* Content */}
+                <div className="p-3.5 sm:p-5 space-y-3 sm:space-y-3.5">
+                  <div className="space-y-1">
+                    <h3 className="text-lg sm:text-xl font-display text-ink font-semibold tracking-tight group-hover:text-ink">
+                      {project.title}
+                    </h3>
+                    {project.subtitle && (
+                      <p className="text-xs font-mono text-ink-muted font-normal">
+                        {project.subtitle}
+                      </p>
+                    )}
+                  </div>
 
-                <p className="text-xs sm:text-sm font-sans text-ink-muted leading-relaxed font-normal line-clamp-3">
-                  {project.description}
-                </p>
+                  <p className="text-xs sm:text-sm font-sans text-ink-muted leading-relaxed font-normal line-clamp-3">
+                    {project.description || project.summary || project.abstract}
+                  </p>
 
-                {/* Metrics snapshot */}
-                <div className="grid grid-cols-2 gap-1.5 sm:gap-2 pt-1">
-                  {project.metrics.map((m) => (
-                    <div
-                      key={m.label}
-                      className="p-1.5 sm:p-2 rounded border border-ink-border bg-paper text-xs font-mono"
-                    >
-                      <span className="text-ink-muted block text-[10px] truncate">{m.label}</span>
-                      <span className="text-ink font-medium text-[11px] sm:text-xs truncate block">{m.value}</span>
+                  {/* Metrics snapshot */}
+                  {Array.isArray(project.metrics) && project.metrics.length > 0 && (
+                    <div className="grid grid-cols-2 gap-1.5 sm:gap-2 pt-1">
+                      {project.metrics.map((m) => (
+                        <div
+                          key={m.label}
+                          className="p-1.5 sm:p-2 rounded border border-ink-border bg-paper text-xs font-mono"
+                        >
+                          <span className="text-ink-muted block text-[10px] uppercase tracking-wider truncate">{m.label}</span>
+                          <span className="text-ink font-semibold text-[11px] sm:text-xs truncate block pt-0.5">{m.value}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
-            </div>
 
-            {/* Action Links */}
-            <div className="p-3.5 sm:p-5 pt-0 flex flex-wrap items-center gap-2 text-xs font-mono">
-              {project.liveDemo && (
-                <a
-                  href={project.liveDemo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-lime text-black font-medium hover:bg-lime/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime text-[11px] sm:text-xs"
-                >
-                  <FaExternalLinkAlt className="w-2.5 h-2.5" aria-hidden="true" />
-                  <span>Live demo</span>
-                </a>
-              )}
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-ink-border bg-paper text-ink hover:bg-paper-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime text-[11px] sm:text-xs"
-                >
-                  <FaGithub className="w-3 h-3" aria-hidden="true" />
-                  <span>Source</span>
-                </a>
-              )}
-            </div>
-          </article>
-        ))}
+              {/* Action Links & Modal Cue */}
+              <div className="p-3.5 sm:p-5 pt-0 flex flex-wrap items-center justify-between gap-2 text-xs font-mono border-t border-ink-border/40 mt-3 pt-3">
+                <div className="flex flex-wrap items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                  {(project.liveDemo || project.links?.live) && (
+                    <a
+                      href={project.liveDemo || project.links?.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded ${accent.bg} ${accent.text} font-medium hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 ${accent.ring} text-[11px] sm:text-xs`}
+                    >
+                      <FaExternalLinkAlt className="w-2.5 h-2.5" aria-hidden="true" />
+                      <span>Live demo</span>
+                    </a>
+                  )}
+                  {(project.github || project.links?.github) && (
+                    <a
+                      href={project.github || project.links?.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-ink-border bg-paper text-ink hover:bg-paper-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime text-[11px] sm:text-xs"
+                    >
+                      <FaGithub className="w-3 h-3" aria-hidden="true" />
+                      <span>Source</span>
+                    </a>
+                  )}
+                </div>
+
+                <span className="text-[11px] font-mono text-ink-muted group-hover:text-ink transition-colors flex items-center gap-1">
+                  <span>Details</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </span>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       {/* Load More Button */}

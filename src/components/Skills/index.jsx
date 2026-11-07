@@ -3,9 +3,52 @@ import {
   HiOutlineCodeBracket,
   HiOutlineComputerDesktop,
   HiOutlinePaintBrush,
-  HiOutlineFilm,
   HiOutlineCpuChip,
+  HiOutlineDevicePhoneMobile,
 } from 'react-icons/hi2';
+import { FaJava } from 'react-icons/fa6';
+import {
+  SiSpringboot,
+  SiReact,
+  SiJavascript,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss3,
+  SiOracle,
+  SiVite,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiSwagger,
+  SiDocker,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
+  SiAdobepremierepro,
+  SiAdobeaftereffects,
+  SiClaude,
+  SiGooglegemini,
+  SiOpenai,
+} from 'react-icons/si';
+
+const DualHtmlCssIcon = () => (
+  <div className="flex items-center -space-x-1" aria-hidden="true">
+    <SiHtml5 className="w-4 h-4 text-[#E34F26]" />
+    <SiCss3 className="w-4 h-4 text-[#1572B6]" />
+  </div>
+);
+
+const DualGitGithubIcon = () => (
+  <div className="flex items-center -space-x-1" aria-hidden="true">
+    <SiGit className="w-4 h-4 text-[#F05032]" />
+    <SiGithub className="w-4 h-4 text-ink" />
+  </div>
+);
+
+const CursorIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-ink" aria-hidden="true" {...props}>
+    <path d="M5.5 3.214V20.786L10.33 15.956H18.58L5.5 3.214Z" />
+  </svg>
+);
 
 const skillCategories = [
   {
@@ -13,14 +56,14 @@ const skillCategories = [
     title: 'Engineering & Web',
     icon: HiOutlineCodeBracket,
     skills: [
-      { name: 'Java', level: 'Backend' },
-      { name: 'Spring Boot', level: 'REST APIs' },
-      { name: 'React.js', level: 'Frontend' },
-      { name: 'JavaScript', level: 'Core' },
-      { name: 'Tailwind CSS', level: 'UI' },
-      { name: 'HTML5 & CSS3', level: 'Semantic' },
-      { name: 'Relational DBs', level: 'Data' },
-      { name: 'Vite', level: 'Tooling' },
+      { name: 'Java', level: 'Backend', icon: FaJava, color: '#E76F00' },
+      { name: 'Spring Boot', level: 'REST APIs', icon: SiSpringboot, color: '#6DB33F' },
+      { name: 'React.js', level: 'Frontend', icon: SiReact, color: '#61DAFB' },
+      { name: 'JavaScript', level: 'Core', icon: SiJavascript, color: '#F7DF1E' },
+      { name: 'Tailwind CSS', level: 'UI', icon: SiTailwindcss, color: '#06B6D4' },
+      { name: 'HTML5 & CSS3', level: 'Semantic', icon: DualHtmlCssIcon },
+      { name: 'Relational DBs', level: 'Oracle / SQL', icon: SiOracle, color: '#F80000' },
+      { name: 'Vite', level: 'Tooling', icon: SiVite, color: '#646CFF' },
     ],
   },
   {
@@ -28,12 +71,11 @@ const skillCategories = [
     title: 'Tools & DevOps',
     icon: HiOutlineComputerDesktop,
     skills: [
-      { name: 'Git & GitHub', level: 'VCS' },
-      { name: 'Postman', level: 'API Testing' },
-      { name: 'Swagger / OpenAPI', level: 'Docs' },
-      { name: 'Responsive Design', level: 'Mobile' },
-      { name: 'Docker', level: 'Containers' },
-
+      { name: 'Git & GitHub', level: 'VCS', icon: DualGitGithubIcon },
+      { name: 'Postman', level: 'API Testing', icon: SiPostman, color: '#FF6C37' },
+      { name: 'Swagger / OpenAPI', level: 'Docs', icon: SiSwagger, color: '#85EA2D' },
+      { name: 'Responsive Design', level: 'Mobile', icon: HiOutlineDevicePhoneMobile, color: '#7ED6A8' },
+      { name: 'Docker', level: 'Containers', icon: SiDocker, color: '#2496ED' },
     ],
   },
   {
@@ -41,10 +83,10 @@ const skillCategories = [
     title: 'Creative & Media',
     icon: HiOutlinePaintBrush,
     skills: [
-      { name: 'Adobe Photoshop', level: 'Raster' },
-      { name: 'Adobe Illustrator', level: 'Vector' },
-      { name: 'Adobe Premiere Pro', level: 'Video' },
-      { name: 'Adobe After Effects', level: 'Motion' },
+      { name: 'Adobe Photoshop', level: 'Raster', icon: SiAdobephotoshop, color: '#31A8FF' },
+      { name: 'Adobe Illustrator', level: 'Vector', icon: SiAdobeillustrator, color: '#FF9A00' },
+      { name: 'Adobe Premiere Pro', level: 'Video', icon: SiAdobepremierepro, color: '#9999FF' },
+      { name: 'Adobe After Effects', level: 'Motion', icon: SiAdobeaftereffects, color: '#9999FF' },
     ],
   },
   {
@@ -52,10 +94,10 @@ const skillCategories = [
     title: 'AI Assisted Workflow',
     icon: HiOutlineCpuChip,
     skills: [
-      { name: 'Claude Code', level: 'Agentic' },
-      { name: 'Cursor', level: 'Editor' },
-      { name: 'Antigravity', level: 'IDE' },
-      { name: 'ChatGPT', level: 'LLM' },
+      { name: 'Claude Code', level: 'Agentic', icon: SiClaude, color: '#D97706' },
+      { name: 'Cursor', level: 'Editor', icon: CursorIcon, color: 'text-ink' },
+      { name: 'Antigravity', level: 'IDE', icon: SiGooglegemini, color: '#4E87F8' },
+      { name: 'ChatGPT', level: 'LLM', icon: SiOpenai, color: '#10A37F' },
     ],
   },
 ];
@@ -95,7 +137,7 @@ export const Skills = memo(() => {
                   aria-selected={isActive}
                   onClick={() => setActiveTab(cat.id)}
                   className={`inline-flex items-center gap-2 px-3.5 py-2 rounded text-xs font-mono transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime ${isActive
-                      ? 'bg-ink text-paper border-ink'
+                      ? 'bg-ink text-paper border-ink font-medium'
                       : 'bg-paper-card text-ink border-ink-border hover:bg-paper-surface'
                     }`}
                 >
@@ -107,20 +149,37 @@ export const Skills = memo(() => {
           </div>
 
           {/* Skill items grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-            {currentCategory.skills.map((skill) => (
-              <div
-                key={skill.name}
-                className="p-3.5 border border-ink-border rounded bg-paper-card flex flex-col justify-between space-y-2"
-              >
-                <span className="text-sm font-mono text-ink font-medium">
-                  {skill.name}
-                </span>
-                <span className="text-xs font-mono text-ink-muted">
-                  {skill.level}
-                </span>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            {currentCategory.skills.map((skill) => {
+              const SkillIcon = skill.icon;
+
+              return (
+                <div
+                  key={skill.name}
+                  className="group p-3.5 sm:p-4 border border-ink-border rounded-lg bg-paper-card hover:bg-paper-surface hover:border-ink transition-all hover:shadow-sm flex flex-col justify-between space-y-3"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-md border border-ink-border/60 bg-paper flex items-center justify-center p-2 shrink-0 transition-transform group-hover:scale-105 shadow-xs">
+                      {SkillIcon && (
+                        <SkillIcon
+                          className="w-5 h-5 shrink-0"
+                          style={skill.color && !skill.color.startsWith('text-') ? { color: skill.color } : undefined}
+                        />
+                      )}
+                    </div>
+                    <span className="text-[10px] sm:text-[11px] font-mono text-ink-muted px-2 py-0.5 rounded bg-paper border border-ink-border/50 truncate">
+                      {skill.level}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span className="text-xs sm:text-sm font-mono text-ink font-medium block truncate group-hover:text-ink">
+                      {skill.name}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

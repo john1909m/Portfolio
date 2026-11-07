@@ -16,6 +16,7 @@ const TechMarquee = lazy(() => import('./components/TechMarquee'));
 const SectionSwitcher = lazy(() => import('./components/SectionSwitcher'));
 const SoftwareSection = lazy(() => import('./components/SoftwareSection'));
 const GraphicSection = lazy(() => import('./components/GraphicSection'));
+const ProjectModal = lazy(() => import('./components/shared/ProjectModal'));
 const About = lazy(() => import('./components/About'));
 const Experience = lazy(() => import('./components/Experience'));
 const Education = lazy(() => import('./components/Education'));
@@ -66,8 +67,19 @@ function App() {
   const [displayedSection, setDisplayedSection] = useState(activeSection);
   const [headerLoaded, setHeaderLoaded] = useState(false);
   const [activeScrollSection, setActiveScrollSection] = useState('home');
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const sectionContainerRef = useRef(null);
+  const activeCardTriggerRef = useRef(null);
+
+  const handleOpenProject = useCallback((project, cardEl) => {
+    activeCardTriggerRef.current = cardEl;
+    setSelectedProject(project);
+  }, []);
+
+  const handleCloseProject = useCallback(() => {
+    setSelectedProject(null);
+  }, []);
 
   // Active section scroll spy (ordered matching the page structure)
   useEffect(() => {
@@ -320,11 +332,11 @@ function App() {
             >
               {displayedSection === 'software' ? (
                 <Suspense fallback={<LoadingFallback />}>
-                  <SoftwareSection />
+                  <SoftwareSection onSelectProject={handleOpenProject} />
                 </Suspense>
               ) : (
                 <Suspense fallback={<LoadingFallback />}>
-                  <GraphicSection />
+                  <GraphicSection onSelectProject={handleOpenProject} />
                 </Suspense>
               )}
             </div>
@@ -353,6 +365,17 @@ function App() {
             <Footer />
           </Suspense>
         </main>
+
+        {/* Project Detail Modal */}
+        {selectedProject && (
+          <Suspense fallback={null}>
+            <ProjectModal
+              project={selectedProject}
+              onClose={handleCloseProject}
+              triggerRef={activeCardTriggerRef}
+            />
+          </Suspense>
+        )}
 
         {/* Mobile floating quick jump nav: Icons on top, text labels below */}
         <aside

@@ -24,6 +24,8 @@ export default {
         mint: '#7ED6A8',
         pink: '#FF8FB1',
         violet: '#9B6BFF',
+        burgundy: '#800020',
+
       },
       fontFamily: {
         display: ['var(--font-display)', 'sans-serif'],
